@@ -20,24 +20,12 @@ Visit [rust-ui.com](https://www.rust-ui.com) to browse components and get instal
     - [Tailwind CSS](https://tailwindcss.com/docs/installation/tailwind-cli)
     - [Cargo Leptos](https://github.com/leptos-rs/cargo-leptos) 
     
-    Ensure you have the Rust toolchain and the WASM target installed:
+    Install cargo-leptos:
     ```bash
-    rustup target add wasm32-unknown-unknown
     cargo install --locked cargo-leptos
     ```
 
-2. Add Dependencies
-  
-  Add the necessary support crates to your Cargo.toml:
-
-  ```toml
-  [dependencies]
-  leptos = { version = "0.6", features = ["hydrate"] }
-  lucide-leptos = "0.1" # Standard icon set
-  tailwind_fuse = "0.3" # Recommended for easy class merging
-  ```
-
-3. Browse the [registry](https://www.rust-ui.com/), find a component (e.g., `Button`), and copy the source into your project's components/ directory.
+2. Browse the [registry](https://www.rust-ui.com/), find a component (e.g., `Button`), and copy the source into your project's components/ directory.
   ```rust
   use crate::components::ui::button::Button;
   

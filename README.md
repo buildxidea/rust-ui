@@ -6,10 +6,27 @@ Inspired by shadcn/ui, built for Rust fullstack apps. A component registry for L
 ## Why Rust/UI?
 Rust/UI isn't a component library you install as a crate. It’s a collection of re-usable components that you copy and paste into your apps.
 
-- Full Control: The code is yours. No node_modules or opaque crate dependencies for your UI.
+- Full Control: The code is yours. No black-box UI framework crates to fight against.
 - Styling: Built with Tailwind CSS for easy customization.
 - Framework: Designed specifically for the Leptos fullstack ecosystem.
 - Type Safe: Leverages Rust's powerful type system for component props.
+
+
+## Ecosystem
+Rust/UI is backed by a set of purpose-built crates:
+
+| Crate | Description |
+|-------|-------------|
+| [`tw-merge`](https://crates.io/crates/tw-merge) | Tailwind class merging utility |
+| [`icons`](https://crates.io/crates/icons) | Icon components for Leptos |
+| [`ui-cli`](https://crates.io/crates/ui-cli) | CLI for adding components to your project |
+
+**Starters**
+
+| Repo | Description |
+|------|-------------|
+| [start-tauri-fullstack](https://github.com/rust-ui/start-tauri-fullstack) | Leptos + Tauri fullstack starter |
+| [start-tauri](https://github.com/rust-ui/start-tauri) | Tauri starter with Rust/UI |
 
 
 ## Getting Started

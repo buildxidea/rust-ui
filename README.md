@@ -60,6 +60,8 @@ Visit [rust-ui.com](https://www.rust-ui.com) to browse components and get instal
 ## Development
 If you'd like to contribute or preview the registry locally:
 
+> **Windows users:** See [README_WINDOWS.md](./README_WINDOWS.md) for setup troubleshooting (Perl conflict, OpenSSL).
+
 1. Clone the repo
     ```bash
     git clone git@github.com:rust-ui/ui.git rust-ui 

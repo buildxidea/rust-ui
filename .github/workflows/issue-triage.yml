@@ -21,7 +21,6 @@ jobs:
     timeout-minutes: 10
     permissions:
       issues: write
-      models: read
 
     steps:
       - name: Triage issue

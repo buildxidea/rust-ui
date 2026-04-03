@@ -84,6 +84,18 @@ class DragAndDropPage extends BasePage {
     this.zone1 = this.draggableZones.first();
     this.zone2 = this.draggableZones.nth(1);
   }
+
+  override async goto(section?: string) {
+    await super.goto(section);
+    // Wait for WASM to hydrate before interacting — drag events fire on DOM
+    // nodes that Leptos replaces during hydration, so we must wait.
+    await this.page.waitForLoadState("networkidle");
+  }
+
+  /** Locate a draggable item by its displayed text. Uses .draggable (JS selector). */
+  item(text: string): Locator {
+    return this.preview.locator(".draggable").filter({ hasText: text }).first();
+  }
 }
 
 /* ========================================================== */
@@ -509,6 +521,68 @@ test.describe("DragAndDrop Page", () => {
       // Zones should be visible containers
       await expect(ui.zone1).toBeVisible();
       await expect(ui.zone2).toBeVisible();
+    });
+  });
+
+  test.describe("Drag Behavior", () => {
+    /**
+     * TEST: Drag item from zone 1 to zone 2
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   What we're testing:
+     *   ┌─────────────────────────────────────────────────────────┐
+     *   │                                                         │
+     *   │   Before:              After:                           │
+     *   │   Zone 1 → [1, 2]      Zone 1 → [2]                    │
+     *   │   Zone 2 → [3, 4]      Zone 2 → [3, 1, 4]              │
+     *   │                                                         │
+     *   │   drag item "1" ──────────────────────────→ zone 2      │
+     *   │                                                         │
+     *   └─────────────────────────────────────────────────────────┘
+     *
+     *   Validates: cross-zone drag works after Leptos hydration
+     */
+    test("drag item from zone 1 to zone 2 moves it there", async ({ page }) => {
+      const ui = new DragAndDropPage(page);
+      await ui.goto();
+
+      await expect(ui.zone1.getByText("1", { exact: true })).toBeVisible();
+
+      await ui.item("1").dragTo(ui.zone2);
+
+      await expect(ui.zone2.getByText("1", { exact: true })).toBeVisible();
+      await expect(ui.zone1.getByText("1", { exact: true })).not.toBeVisible();
+      await expect(ui.zone1.getByText("2", { exact: true })).toBeVisible();
+    });
+
+    /**
+     * TEST: Drag item from zone 2 to zone 1
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   What we're testing:
+     *   ┌─────────────────────────────────────────────────────────┐
+     *   │                                                         │
+     *   │   Before:              After:                           │
+     *   │   Zone 1 → [1, 2]      Zone 1 → [1, 2, 3]              │
+     *   │   Zone 2 → [3, 4]      Zone 2 → [4]                    │
+     *   │                                                         │
+     *   │   zone 1 ←────────────────────────── drag item "3"      │
+     *   │                                                         │
+     *   └─────────────────────────────────────────────────────────┘
+     *
+     *   Validates: reverse cross-zone drag works
+     */
+    test("drag item from zone 2 to zone 1 moves it there", async ({ page }) => {
+      const ui = new DragAndDropPage(page);
+      await ui.goto();
+
+      await expect(ui.zone2.getByText("3", { exact: true })).toBeVisible();
+
+      await ui.item("3").dragTo(ui.zone1);
+
+      await expect(ui.zone1.getByText("3", { exact: true })).toBeVisible();
+      await expect(ui.zone2.getByText("3", { exact: true })).not.toBeVisible();
+      await expect(ui.zone2.getByText("4", { exact: true })).toBeVisible();
     });
   });
 

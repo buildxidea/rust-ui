@@ -1,29 +1,31 @@
-// TODO. "draggable__item" instead of "draggable".
-const draggables = document.querySelectorAll(".draggable");
-const containers = document.querySelectorAll(".dragabble__container");
+// Use event delegation on document so handlers survive Leptos WASM hydration,
+// which replaces SSR DOM nodes and strips directly-attached listeners.
 
-for (const draggable of draggables) {
-  draggable.addEventListener("dragstart", () => {
-    draggable.classList.add("dragging");
-  });
+document.addEventListener("dragstart", (e) => {
+  if (e.target.classList.contains("draggable")) {
+    e.target.classList.add("dragging");
+  }
+});
 
-  draggable.addEventListener("dragend", () => {
-    draggable.classList.remove("dragging");
-  });
-}
+document.addEventListener("dragend", (e) => {
+  if (e.target.classList.contains("draggable")) {
+    e.target.classList.remove("dragging");
+  }
+});
 
-for (const container of containers) {
-  container.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    const afterElement = getDragAfterElement(container, e.clientY);
-    const draggable = document.querySelector(".dragging");
-    if (afterElement == null) {
-      container.appendChild(draggable);
-    } else {
-      container.insertBefore(draggable, afterElement);
-    }
-  });
-}
+document.addEventListener("dragover", (e) => {
+  const container = e.target.closest(".dragabble__container");
+  if (!container) return;
+  e.preventDefault();
+  const afterElement = getDragAfterElement(container, e.clientY);
+  const draggable = document.querySelector(".dragging");
+  if (!draggable) return;
+  if (afterElement == null) {
+    container.appendChild(draggable);
+  } else {
+    container.insertBefore(draggable, afterElement);
+  }
+});
 
 function getDragAfterElement(container, y) {
   const draggableElements = [

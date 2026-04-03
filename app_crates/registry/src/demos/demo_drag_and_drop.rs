@@ -23,6 +23,6 @@ pub fn DemoDragAndDrop() -> impl IntoView {
             </DraggableZone>
         </Draggable>
 
-        <script src="/components/drag_and_drop.js"></script>
+        <script inner_html=include_str!("../../../../public/components/drag_and_drop.js")></script>
     }
 }

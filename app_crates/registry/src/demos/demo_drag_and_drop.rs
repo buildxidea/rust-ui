@@ -5,13 +5,6 @@ use crate::ui::drag_and_drop::{Draggable, DraggableItem, DraggableZone};
 #[component]
 pub fn DemoDragAndDrop() -> impl IntoView {
     view! {
-        <style>
-            {".draggable.dragging {
-            opacity: 0.5;
-            }
-            "}
-        </style>
-
         <Draggable class="max-w-2xl">
             <DraggableZone>
                 <DraggableItem text="1" />
@@ -22,7 +15,5 @@ pub fn DemoDragAndDrop() -> impl IntoView {
                 <DraggableItem text="4" />
             </DraggableZone>
         </Draggable>
-
-        <script inner_html=include_str!("../../../../public/components/drag_and_drop.js")></script>
     }
 }

@@ -666,7 +666,6 @@ Each dependency level is shown with progressive bullet points: * for components,
 * demo_docker (demos)
   ** js: /xx.js
 * demo_drag_and_drop (demos)
-  ** js: /components/drag_and_drop.js
   ** drag_and_drop (ui)
 * demo_drawer (demos)
   ** drawer (ui)

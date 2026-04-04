@@ -1066,4 +1066,88 @@ test.describe("Drawer Page", () => {
       expect(contentCount).toBeGreaterThan(1);
     });
   });
+
+  /**
+   * ─────────────────────────────────────────────────────────────────────────
+   * SPA NAVIGATION TESTS
+   * ─────────────────────────────────────────────────────────────────────────
+   *
+   * These tests navigate here via the Leptos router (no full page reload),
+   * which triggers the page__fade animation (translateY + opacity on the
+   * #page__outlet container). This historically broke position:fixed overlays
+   * because CSS transform creates a containing block for fixed children.
+   *
+   *   [Button page] ──SPA nav──► [Drawer page] ──► open drawer
+   *                               page__fade
+   *                               animation runs
+   *
+   * ─────────────────────────────────────────────────────────────────────────
+   */
+  test.describe("SPA Navigation", () => {
+    /**
+     * TEST: Drawer opens after SPA navigation
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   What we're testing:
+     *   ┌─────────────────────────────────────────────────────────┐
+     *   │  1. Full load /docs/components/button                   │
+     *   │  2. Click sidebar → SPA nav to /docs/components/drawer  │
+     *   │     (page__fade animation fires)                        │
+     *   │  3. Click "Open Drawer"                                 │
+     *   │  4. data-state="open" ✓                                 │
+     *   └─────────────────────────────────────────────────────────┘
+     *
+     *   Validates: Drawer trigger works after SPA navigation
+     *   (regression: transform stacking context broke fixed overlay)
+     */
+    test("drawer should open after SPA navigation", async ({ page }) => {
+      const ui = new DrawerPage(page);
+      await ui.gotoViaSpa();
+      await ui.openDrawer();
+
+      await expect(ui.drawerContent).toHaveAttribute("data-state", "open");
+    });
+
+    /**
+     * TEST: Drawer overlay visible after SPA navigation
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   What we're testing:
+     *   ┌─────────────────────────────────────────────────────────┐
+     *   │  After SPA nav + drawer open:                           │
+     *   │  ┌─────────────────────────────────────────────────┐   │
+     *   │  │░░░░░░ DrawerOverlay (position:fixed) ░░░░░░░░░░░│   │
+     *   │  ├─────────────────────────────────────────────────┤   │
+     *   │  │      DrawerContent                              │   │
+     *   │  └─────────────────────────────────────────────────┘   │
+     *   └─────────────────────────────────────────────────────────┘
+     *
+     *   Validates: Overlay is visible and covers the page correctly
+     *   (regression: fixed overlay was mispositioned due to transform)
+     */
+    test("drawer overlay should be visible after SPA navigation", async ({ page }) => {
+      const ui = new DrawerPage(page);
+      await ui.gotoViaSpa();
+      await ui.openDrawer();
+
+      await expect(ui.drawerOverlay).toBeVisible();
+    });
+
+    /**
+     * TEST: Drawer can close after SPA navigation
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   Validates: Full open/close cycle works after SPA navigation.
+     *   Uses Escape key instead of the Close button click to avoid
+     *   timing issues with the vaul drawer animation after SPA nav.
+     */
+    test("drawer should close after SPA navigation", async ({ page }) => {
+      const ui = new DrawerPage(page);
+      await ui.gotoViaSpa();
+      await ui.openDrawer();
+
+      await page.keyboard.press("Escape");
+      await expect(ui.drawerContent).toHaveAttribute("data-state", "closed");
+    });
+  });
 });

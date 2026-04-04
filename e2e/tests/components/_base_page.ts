@@ -63,6 +63,32 @@ export abstract class BasePage {
       timeout,
     });
   }
+
+  /**
+   * Navigate to this component's page via SPA navigation (not a full reload).
+   * This exercises the page__fade route transition animation, which historically
+   * broke position:fixed overlays (Drawer, ContextMenu, Sonner) by creating a
+   * CSS stacking context via transform on the outlet container.
+   *
+   * Strategy: full-load a different component page, then click the sidebar link
+   * to SPA-navigate here. The Leptos router fires retrigger_page_fade(), which
+   * applies translateY + opacity animation on #page__outlet.
+   *
+   * @param fromComponent Component to start from (default: "button")
+   */
+  async gotoViaSpa(fromComponent = "button"): Promise<void> {
+    // Start on a different page (full load)
+    await this.page.goto(`/docs/components/${fromComponent}`);
+
+    // Click the sidebar/nav link — triggers SPA navigation + page__fade animation
+    const targetUrl = `/docs/components/${this.componentName}`;
+    await this.page.click(`a[href="${targetUrl}"]`);
+
+    // Wait for the URL to update and the animated outlet to settle
+    await this.page.waitForURL(`**${targetUrl}`, { timeout: 10000 });
+    // Allow the 200ms page__fade animation to complete
+    await this.page.waitForTimeout(300);
+  }
 }
 
 /**

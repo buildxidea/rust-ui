@@ -526,4 +526,63 @@ test.describe("ContextMenu Page", () => {
       await expect(ui.content).toHaveClass(/z-50/);
     });
   });
+
+  /**
+   * ─────────────────────────────────────────────────────────────────────────
+   * SPA NAVIGATION TESTS
+   * ─────────────────────────────────────────────────────────────────────────
+   *
+   * These tests navigate here via the Leptos router (no full page reload),
+   * which triggers the page__fade animation (translateY + opacity on the
+   * #page__outlet container). This historically broke position:fixed overlays
+   * because CSS transform creates a containing block for fixed children.
+   *
+   *   [Button page] ──SPA nav──► [ContextMenu page] ──► right-click
+   *                               page__fade
+   *                               animation runs
+   *
+   * ─────────────────────────────────────────────────────────────────────────
+   */
+  test.describe("SPA Navigation", () => {
+    /**
+     * TEST: ContextMenu opens after SPA navigation
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   What we're testing:
+     *   ┌─────────────────────────────────────────────────────────┐
+     *   │  1. Full load /docs/components/button                   │
+     *   │  2. Click sidebar → SPA nav to /docs/components/        │
+     *   │     context-menu (page__fade animation fires)           │
+     *   │  3. Right-click trigger                                 │
+     *   │  4. data-state="open" ✓                                 │
+     *   └─────────────────────────────────────────────────────────┘
+     *
+     *   Validates: ContextMenu opens after SPA navigation
+     *   (regression: transform stacking context broke fixed overlay)
+     */
+    test("context menu should open after SPA navigation", async ({ page }) => {
+      const ui = new ContextMenuPage(page);
+      await ui.gotoViaSpa();
+      await ui.waitForInitialized(ui.content);
+      await ui.openContextMenu();
+
+      await expect(ui.content).toHaveAttribute("data-state", "open");
+    });
+
+    /**
+     * TEST: ContextMenu items visible after SPA navigation
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   Validates: Menu items are visible and correctly positioned
+     *   after SPA navigation (not clipped/mispositioned by transform)
+     */
+    test("context menu items should be visible after SPA navigation", async ({ page }) => {
+      const ui = new ContextMenuPage(page);
+      await ui.gotoViaSpa();
+      await ui.waitForInitialized(ui.content);
+      await ui.openContextMenu();
+
+      await expect(ui.menuItems.first()).toBeVisible();
+    });
+  });
 });

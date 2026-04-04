@@ -86,7 +86,7 @@ pub fn TableOfContents(toc_items: Vec<TocItem>) -> impl IntoView {
     view! {
         <aside
             data-name="TableOfContents"
-            class="hidden sticky lg:block top-18 h-[calc(100vh-3.5rem)] w-[250px] shrink-0"
+            class="hidden sticky lg:block top-18 h-[calc(100vh-3.5rem)] w-[250px] shrink-0 page__fade"
         >
             <div class="flex flex-col pl-4 h-full">
                 <div>

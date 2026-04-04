@@ -9,6 +9,14 @@ image_dark = "/images/thumbnails/_placeholder-dark.webp"
 +++
 
 
+## April 2026 - Route Transition Animation
+
+### UX Improvement
+
+- **Page transitions**: Smooth fade-in animation when navigating between routes — only the content area transitions, sidebars stay fixed. Applied across Docs, Charts, and Blocks layouts.
+
+---
+
 ## March 2026 - DataTable Faceted Filters
 
 ### New Demos

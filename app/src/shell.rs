@@ -102,12 +102,12 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
                     "#app-loading-screen svg line:nth-child(8){animation-delay:-0.125s}"
                     "@keyframes ios-spin{0%,39%,100%{opacity:0.2}40%{opacity:1}}"
                     "#app-loading-screen.fade-out{clip-path:ellipse(150% 0% at 50% 0%)}"
-                    // opacity-only (no transform): transform creates a containing block for
-                    // position:fixed children (Drawer, ContextMenu, Sonner), breaking their layout.
-                    // fill-mode:backwards (not both/forwards): keeps stacking context clean after
-                    // animation ends — fill-mode:both would permanently apply animation styles,
-                    // which also triggers a stacking context even at opacity:1.
-                    "@keyframes page__fade_in{from{opacity:0}to{opacity:1}}"
+                    // fill-mode:backwards (not both/forwards): transform only exists during the
+                    // 200ms animation. After it ends, the element reverts to its natural styles
+                    // (no transform, no stacking context), so position:fixed children (Drawer,
+                    // ContextMenu, Sonner) are unaffected. fill-mode:both would permanently apply
+                    // the last keyframe's transform:translateY(0), breaking fixed element layout.
+                    "@keyframes page__fade_in{from{opacity:0;transform:translateY(6px)}to{opacity:1}}"
                     ".page__fade{animation:page__fade_in 200ms ease-out backwards}"
                 </style>
                 <script>

@@ -15,7 +15,7 @@ pub fn SharedSidenavDemos(
     let current_demo_name = Memo::new(move |_| params_demo_name());
 
     view! {
-        <div class="hidden fixed top-14 z-30 md:flex md:sticky md:top-14 md:ml-2 w-[205px] h-[calc(100vh-3.5rem)] shrink-0">
+        <div class="hidden fixed top-14 z-30 md:flex md:sticky md:top-14 md:ml-2 w-[175px] h-[calc(100vh-3.5rem)] shrink-0">
             <aside data-name="__Sidenav_Docs" class="flex overflow-hidden flex-col flex-1 group/scrollbar-on-hover">
                 <div class="flex overflow-hidden overflow-y-auto overscroll-y-contain flex-col gap-4 pb-4 w-full h-full rounded-[inherit] scrollbar__on_hover">
                     {all_arc_demos

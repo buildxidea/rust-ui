@@ -1,8 +1,8 @@
 use icons::{PanelLeft, Search};
 use leptos::prelude::*;
+use leptos_router::StaticSegment;
 use leptos_router::components::{Outlet, ParentRoute};
 use leptos_router::hooks::use_location;
-use leptos_router::{MatchNestedRoutes, StaticSegment};
 
 use crate::blocks::sidenav_routes::{DocsRoutes, SidenavRoutes};
 use crate::blocks::sidenav_routes_selector::SidenavRoutesSelector;

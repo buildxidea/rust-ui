@@ -17,6 +17,15 @@ image_dark = "/images/thumbnails/_placeholder-dark.webp"
 
 ---
 
+## March 2026 - Drag & Drop Rewrite + use-history Fix
+
+### Bug Fixes
+
+- **Drag & Drop**: Rewrote drag-and-drop logic from JS to Rust/WASM — fixes a bug where drag-and-drop was broken after Leptos hydration. Added keyboard focus support (`tabindex=0`) on draggable items.
+- **[use-history](/docs/hooks/use-history)**: Fixed active color not syncing correctly after undo/redo operations.
+
+---
+
 ## March 2026 - DataTable Faceted Filters
 
 ### New Demos

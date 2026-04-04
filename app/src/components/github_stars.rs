@@ -1,9 +1,18 @@
+#[cfg(feature = "ssr")]
+use std::sync::{Mutex, OnceLock};
+#[cfg(feature = "ssr")]
+use std::time::Instant;
+
 use leptos::prelude::*;
 use leptos::server_fn::codec::{GetUrl, Json};
 use registry::ui::skeleton::Skeleton;
 
 const GITHUB_REPO_URL: &str = "https://github.com/rust-ui/ui";
+#[cfg(feature = "ssr")]
 const GITHUB_API_URL: &str = "https://api.github.com/repos/rust-ui/ui";
+
+#[cfg(feature = "ssr")]
+const CACHE_TTL_SECS: u64 = 3600; // 1 hour
 
 #[cfg(feature = "ssr")]
 #[derive(serde::Deserialize)]
@@ -11,9 +20,21 @@ struct GithubRepoResponse {
     stargazers_count: u32,
 }
 
+#[cfg(feature = "ssr")]
+static STARS_CACHE: OnceLock<Mutex<Option<(u32, Instant)>>> = OnceLock::new();
+
 /// * We need to specify input & output for mobile targets (Android, iOS) to work. DO NOT CHANGE.
 #[server(FetchGithubStars, "/api", input = GetUrl, output = Json)]
 pub async fn fetch_github_stars() -> Result<u32, ServerFnError> {
+    let cache = STARS_CACHE.get_or_init(|| std::sync::Mutex::new(None));
+
+    // Return cached value if still fresh
+    if let Some((count, fetched_at)) = *cache.lock().unwrap() {
+        if fetched_at.elapsed().as_secs() < CACHE_TTL_SECS {
+            return Ok(count);
+        }
+    }
+
     let client = reqwest::Client::new();
     let mut request = client.get(GITHUB_API_URL).header("User-Agent", "rust-ui");
     if let Ok(token) = std::env::var("GH_TOKEN") {
@@ -30,6 +51,8 @@ pub async fn fetch_github_stars() -> Result<u32, ServerFnError> {
         tracing::warn!("{msg}");
         ServerFnError::new(msg)
     })?;
+
+    *cache.lock().unwrap() = Some((repo.stargazers_count, std::time::Instant::now()));
 
     Ok(repo.stargazers_count)
 }

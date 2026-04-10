@@ -4,6 +4,14 @@
 
 ---
 
+## 0.3.13
+
+### Added
+
+- `ui add` — warns when the project is not configured for nightly Rust (missing `rust-toolchain.toml` with `channel = "nightly"` or `leptos` without `features = ["nightly"]`); prompts to continue or abort
+
+---
+
 ## 0.3.11
 
 ### Added

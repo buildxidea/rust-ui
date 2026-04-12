@@ -71,7 +71,7 @@ pub fn Login02() -> impl IntoView {
                                         />
                                         <button
                                             type="button"
-                                            class="absolute top-1/2 right-3 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                                            class="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                                             attr:aria-label=move || {
                                                 if show_password.get() { "Hide password" } else { "Show password" }
                                             }

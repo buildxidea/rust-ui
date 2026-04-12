@@ -2,9 +2,9 @@ mod parser;
 #[cfg(test)]
 mod parser_test;
 
-pub(crate) use parser::take_until_unbalanced;
 #[doc(hidden)]
 pub use parser::parse_tailwind;
+pub(crate) use parser::take_until_unbalanced;
 
 #[doc(hidden)]
 #[derive(Clone, Debug, PartialEq, Default)]

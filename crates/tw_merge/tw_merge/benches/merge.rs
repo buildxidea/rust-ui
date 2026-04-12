@@ -34,7 +34,9 @@ fn tailwind_merge_slice(bencher: Bencher, len: usize) {
     sample_size = SAMPLE_SIZE
 )]
 fn tailwind_parse(bencher: Bencher, len: usize) {
-    bencher.with_inputs(|| generate_random_classes(len)).bench_values(|classes| parse_tailwind(&classes, AstParseOptions::default()));
+    bencher
+        .with_inputs(|| generate_random_classes(len))
+        .bench_values(|classes| parse_tailwind(&classes, AstParseOptions::default()));
 }
 
 // create a vec with the a length of len and fill it with random data

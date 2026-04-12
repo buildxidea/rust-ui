@@ -1,7 +1,7 @@
 ---
 title: "Demo Input Group Tooltip"
 name: "demo_input_group_tooltip"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["field", "input_group", "tooltip"]
 type: "components:demos"
 path: "demos/demo_input_group_tooltip.rs"

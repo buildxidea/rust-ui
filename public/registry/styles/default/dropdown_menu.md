@@ -1,7 +1,7 @@
 ---
 title: "Dropdown Menu"
 name: "dropdown_menu"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/dropdown_menu.rs"

@@ -1,7 +1,7 @@
 ---
 title: "Form"
 name: "form"
-cargo_dependencies: []
+cargo_dependencies: ["serde", "strum", "validator"]
 registry_dependencies: ["input", "label", "separator"]
 type: "components:ui"
 path: "ui/form.rs"

@@ -1,7 +1,7 @@
 ---
 title: "Sidenav Routes"
 name: "sidenav_routes"
-cargo_dependencies: []
+cargo_dependencies: ["heck", "strum"]
 registry_dependencies: []
 type: "components:blocks"
 path: "blocks/sidenav_routes.rs"

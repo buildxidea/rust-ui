@@ -1,7 +1,7 @@
 ---
 title: "Date Picker"
 name: "date_picker"
-cargo_dependencies: []
+cargo_dependencies: ["time"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/date_picker.rs"

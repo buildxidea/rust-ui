@@ -1,7 +1,7 @@
 ---
 title: "Breadcrumb"
 name: "breadcrumb"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/breadcrumb.rs"

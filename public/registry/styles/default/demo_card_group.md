@@ -1,7 +1,7 @@
 ---
 title: "Demo Card Group"
 name: "demo_card_group"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button"]
 type: "components:demos"
 path: "demos/demo_card_group.rs"

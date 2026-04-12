@@ -1,7 +1,7 @@
 ---
 title: "Integration02"
 name: "integration02"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button"]
 type: "components:blocks"
 path: "blocks/integration02.rs"

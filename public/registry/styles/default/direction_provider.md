@@ -1,7 +1,7 @@
 ---
 title: "Direction Provider"
 name: "direction_provider"
-cargo_dependencies: []
+cargo_dependencies: ["strum"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/direction_provider.rs"

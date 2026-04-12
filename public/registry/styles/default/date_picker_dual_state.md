@@ -1,8 +1,8 @@
 ---
 title: "Date Picker Dual State"
 name: "date_picker_dual_state"
-cargo_dependencies: []
-registry_dependencies: []
+cargo_dependencies: ["time"]
+registry_dependencies: ["date", "query"]
 type: "components:ui"
 path: "ui/date_picker_dual_state.rs"
 ---

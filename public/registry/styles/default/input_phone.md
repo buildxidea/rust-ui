@@ -1,8 +1,8 @@
 ---
 title: "Input Phone"
 name: "input_phone"
-cargo_dependencies: []
-registry_dependencies: ["command", "input", "popover"]
+cargo_dependencies: ["icons/leptos"]
+registry_dependencies: ["command", "country", "input", "phone_number", "popover"]
 type: "components:ui"
 path: "ui/input_phone.rs"
 ---

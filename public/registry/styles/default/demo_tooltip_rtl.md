@@ -1,7 +1,7 @@
 ---
 title: "Demo Tooltip Rtl"
 name: "demo_tooltip_rtl"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button", "direction_provider", "tooltip"]
 type: "components:demos"
 path: "demos/demo_tooltip_rtl.rs"

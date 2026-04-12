@@ -1,7 +1,7 @@
 ---
 title: "Demo Hover Card Rtl"
 name: "demo_hover_card_rtl"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["avatar", "button", "direction_provider", "hover_card"]
 type: "components:demos"
 path: "demos/demo_hover_card_rtl.rs"

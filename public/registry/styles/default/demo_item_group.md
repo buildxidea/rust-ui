@@ -1,7 +1,7 @@
 ---
 title: "Demo Item Group"
 name: "demo_item_group"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["avatar", "badge", "item"]
 type: "components:demos"
 path: "demos/demo_item_group.rs"

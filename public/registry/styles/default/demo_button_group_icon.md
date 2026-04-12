@@ -1,7 +1,7 @@
 ---
 title: "Demo Button Group Icon"
 name: "demo_button_group_icon"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button", "button_group"]
 type: "components:demos"
 path: "demos/demo_button_group_icon.rs"

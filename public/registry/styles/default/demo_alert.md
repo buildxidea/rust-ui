@@ -1,7 +1,7 @@
 ---
 title: "Demo Alert"
 name: "demo_alert"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["alert"]
 type: "components:demos"
 path: "demos/demo_alert.rs"

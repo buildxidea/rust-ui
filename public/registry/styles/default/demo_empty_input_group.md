@@ -1,7 +1,7 @@
 ---
 title: "Demo Empty Input Group"
 name: "demo_empty_input_group"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["empty", "input_group", "kbd"]
 type: "components:demos"
 path: "demos/demo_empty_input_group.rs"

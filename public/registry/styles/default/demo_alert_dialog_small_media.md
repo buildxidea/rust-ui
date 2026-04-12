@@ -1,7 +1,7 @@
 ---
 title: "Demo Alert Dialog Small Media"
 name: "demo_alert_dialog_small_media"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["alert_dialog", "button"]
 type: "components:demos"
 path: "demos/demo_alert_dialog_small_media.rs"

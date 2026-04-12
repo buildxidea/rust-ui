@@ -1,7 +1,7 @@
 ---
 title: "Demo Card Carousel"
 name: "demo_card_carousel"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["card", "card_carousel"]
 type: "components:demos"
 path: "demos/demo_card_carousel.rs"

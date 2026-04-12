@@ -1,7 +1,7 @@
 ---
 title: "Demo Form Fieldset"
 name: "demo_form_fieldset"
-cargo_dependencies: []
+cargo_dependencies: ["serde", "validator"]
 registry_dependencies: ["form"]
 type: "components:demos"
 path: "demos/demo_form_fieldset.rs"

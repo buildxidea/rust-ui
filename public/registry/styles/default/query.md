@@ -1,7 +1,7 @@
 ---
 title: "Query"
 name: "query"
-cargo_dependencies: []
+cargo_dependencies: ["time"]
 registry_dependencies: []
 type: "components:utils"
 path: "utils/query.rs"

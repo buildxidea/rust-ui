@@ -1,7 +1,7 @@
 ---
 title: "Sidenav Routes Selector"
 name: "sidenav_routes_selector"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["dropdown_menu"]
 type: "components:blocks"
 path: "blocks/sidenav_routes_selector.rs"

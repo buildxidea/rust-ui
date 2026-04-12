@@ -1,7 +1,7 @@
 ---
 title: "Demo Combobox"
 name: "demo_combobox"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos", "strum"]
 registry_dependencies: ["command", "popover"]
 type: "components:demos"
 path: "demos/demo_combobox.rs"

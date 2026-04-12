@@ -1,7 +1,7 @@
 ---
 title: "Demo Collapsible Settings"
 name: "demo_collapsible_settings"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["card", "collapsible", "field", "input"]
 type: "components:demos"
 path: "demos/demo_collapsible_settings.rs"

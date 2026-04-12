@@ -1,7 +1,7 @@
 ---
 title: "Pie Chart 01"
 name: "pie_chart_01"
-cargo_dependencies: []
+cargo_dependencies: ["serde"]
 registry_dependencies: []
 type: "components:charts"
 path: "charts/pie_chart_01.rs"

@@ -1,7 +1,7 @@
 ---
 title: "Select Native"
 name: "select_native"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/select_native.rs"

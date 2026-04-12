@@ -1,7 +1,7 @@
 ---
 title: "Demo Dropdown Menu Destructive"
 name: "demo_dropdown_menu_destructive"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["dropdown_menu", "separator"]
 type: "components:demos"
 path: "demos/demo_dropdown_menu_destructive.rs"

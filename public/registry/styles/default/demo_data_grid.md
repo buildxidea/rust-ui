@@ -1,7 +1,7 @@
 ---
 title: "Demo Data Grid"
 name: "demo_data_grid"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos", "serde", "strum"]
 registry_dependencies: ["badge", "checkbox", "context_menu", "data_grid", "multi_select", "separator", "toast_custom"]
 type: "components:demos"
 path: "demos/demo_data_grid.rs"

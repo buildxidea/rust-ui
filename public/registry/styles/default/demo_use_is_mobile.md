@@ -1,7 +1,7 @@
 ---
 title: "Demo Use Is Mobile"
 name: "demo_use_is_mobile"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: []
 type: "components:demos"
 path: "demos/demo_use_is_mobile.rs"

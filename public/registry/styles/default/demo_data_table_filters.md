@@ -1,7 +1,7 @@
 ---
 title: "Demo Data Table Filters"
 name: "demo_data_table_filters"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos", "strum"]
 registry_dependencies: ["alert_dialog", "badge", "button", "checkbox", "data_table", "dropdown_menu", "input", "multi_select", "popover", "separator"]
 type: "components:demos"
 path: "demos/demo_data_table_filters.rs"

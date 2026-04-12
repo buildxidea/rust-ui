@@ -1,7 +1,7 @@
 ---
 title: "Demo Pressable"
 name: "demo_pressable"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button", "card", "pressable"]
 type: "components:demos"
 path: "demos/demo_pressable.rs"

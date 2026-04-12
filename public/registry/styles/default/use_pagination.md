@@ -2,7 +2,7 @@
 title: "Use Pagination"
 name: "use_pagination"
 cargo_dependencies: []
-registry_dependencies: []
+registry_dependencies: ["query"]
 type: "components:hooks/"
 path: "hooks/use_pagination.rs"
 ---

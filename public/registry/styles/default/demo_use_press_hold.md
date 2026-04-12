@@ -1,7 +1,7 @@
 ---
 title: "Demo Use Press Hold"
 name: "demo_use_press_hold"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button_action", "toast_custom"]
 type: "components:demos"
 path: "demos/demo_use_press_hold.rs"

@@ -1,7 +1,7 @@
 ---
 title: "Demo Bottom Nav"
 name: "demo_bottom_nav"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos", "strum"]
 registry_dependencies: ["bottom_nav"]
 type: "components:demos"
 path: "demos/demo_bottom_nav.rs"

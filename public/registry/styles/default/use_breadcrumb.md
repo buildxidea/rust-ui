@@ -1,7 +1,7 @@
 ---
 title: "Use Breadcrumb"
 name: "use_breadcrumb"
-cargo_dependencies: []
+cargo_dependencies: ["heck"]
 registry_dependencies: []
 type: "components:hooks/"
 path: "hooks/use_breadcrumb.rs"

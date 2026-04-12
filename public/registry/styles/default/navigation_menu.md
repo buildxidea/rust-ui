@@ -1,7 +1,7 @@
 ---
 title: "Navigation Menu"
 name: "navigation_menu"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/navigation_menu.rs"

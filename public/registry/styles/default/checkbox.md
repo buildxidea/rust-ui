@@ -1,7 +1,7 @@
 ---
 title: "Checkbox"
 name: "checkbox"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/checkbox.rs"

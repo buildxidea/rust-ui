@@ -1,7 +1,7 @@
 ---
 title: "Demo Radio Button Custom"
 name: "demo_radio_button_custom"
-cargo_dependencies: []
+cargo_dependencies: ["strum"]
 registry_dependencies: ["label", "radio_button"]
 type: "components:demos"
 path: "demos/demo_radio_button_custom.rs"

@@ -1,7 +1,7 @@
 ---
 title: "Demo Avatar Badge Icon"
 name: "demo_avatar_badge_icon"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["avatar"]
 type: "components:demos"
 path: "demos/demo_avatar_badge_icon.rs"

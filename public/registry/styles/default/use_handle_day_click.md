@@ -1,8 +1,8 @@
 ---
 title: "Use Handle Day Click"
 name: "use_handle_day_click"
-cargo_dependencies: []
-registry_dependencies: []
+cargo_dependencies: ["time"]
+registry_dependencies: ["query"]
 type: "components:hooks/"
 path: "hooks/use_handle_day_click.rs"
 ---

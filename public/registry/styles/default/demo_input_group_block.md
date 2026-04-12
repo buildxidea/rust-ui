@@ -1,7 +1,7 @@
 ---
 title: "Demo Input Group Block"
 name: "demo_input_group_block"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["badge", "input_group"]
 type: "components:demos"
 path: "demos/demo_input_group_block.rs"

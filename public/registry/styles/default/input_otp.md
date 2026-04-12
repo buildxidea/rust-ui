@@ -1,7 +1,7 @@
 ---
 title: "Input Otp"
 name: "input_otp"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/input_otp.rs"

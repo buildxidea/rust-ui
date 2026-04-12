@@ -1,7 +1,7 @@
 ---
 title: "Demo Input Group In Card"
 name: "demo_input_group_in_card"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button", "card", "field", "input", "input_group"]
 type: "components:demos"
 path: "demos/demo_input_group_in_card.rs"

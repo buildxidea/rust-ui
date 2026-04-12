@@ -1,7 +1,7 @@
 ---
 title: "Demo Use Copy To Clipboard"
 name: "demo_use_copy_to_clipboard"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button", "input"]
 type: "components:demos"
 path: "demos/demo_use_copy_to_clipboard.rs"

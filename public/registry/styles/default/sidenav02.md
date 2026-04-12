@@ -1,7 +1,7 @@
 ---
 title: "Sidenav02"
 name: "sidenav02"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["accordion", "button", "sheet", "sidenav"]
 type: "components:blocks"
 path: "blocks/sidenav02.rs"
@@ -25,9 +25,9 @@ ui add sidenav02
 ```rust
 use icons::PanelLeft;
 use leptos::prelude::*;
+use leptos_router::StaticSegment;
 use leptos_router::components::{Outlet, ParentRoute};
 use leptos_router::hooks::use_location;
-use leptos_router::{MatchNestedRoutes, StaticSegment};
 
 use crate::components::blocks::sidenav_routes::{DocsRoutes, SidenavRoutes};
 use crate::components::blocks::sidenav_routes_selector::SidenavRoutesSelector;

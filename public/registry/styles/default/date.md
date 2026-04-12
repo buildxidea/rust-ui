@@ -1,7 +1,7 @@
 ---
 title: "Date"
 name: "date"
-cargo_dependencies: []
+cargo_dependencies: ["time"]
 registry_dependencies: []
 type: "components:utils"
 path: "utils/date.rs"

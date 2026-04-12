@@ -1,7 +1,7 @@
 ---
 title: "Demo Button Action"
 name: "demo_button_action"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button_action", "toast_custom"]
 type: "components:demos"
 path: "demos/demo_button_action.rs"

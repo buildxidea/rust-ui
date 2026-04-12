@@ -1,7 +1,7 @@
 ---
 title: "Demo Shimmer"
 name: "demo_shimmer"
-cargo_dependencies: []
+cargo_dependencies: ["serde"]
 registry_dependencies: ["button", "card", "shimmer"]
 type: "components:demos"
 path: "demos/demo_shimmer.rs"

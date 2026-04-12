@@ -1,7 +1,7 @@
 ---
 title: "Faq02"
 name: "faq02"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["accordion"]
 type: "components:blocks"
 path: "blocks/faq02.rs"

@@ -2,7 +2,7 @@
 title: "Demo Input Phone"
 name: "demo_input_phone"
 cargo_dependencies: []
-registry_dependencies: ["input_phone"]
+registry_dependencies: ["country", "input_phone", "phone_number"]
 type: "components:demos"
 path: "demos/demo_input_phone.rs"
 ---

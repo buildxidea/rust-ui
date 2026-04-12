@@ -1,7 +1,7 @@
 ---
 title: "Sidenav Inset Right"
 name: "sidenav_inset_right"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["breadcrumb", "separator", "sidenav"]
 type: "components:blocks"
 path: "blocks/sidenav_inset_right.rs"

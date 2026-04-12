@@ -1,7 +1,7 @@
 ---
 title: "Demo Date Picker Dropdown"
 name: "demo_date_picker_dropdown"
-cargo_dependencies: []
+cargo_dependencies: ["time"]
 registry_dependencies: ["date_picker", "date_picker_state"]
 type: "components:demos"
 path: "demos/demo_date_picker_dropdown.rs"

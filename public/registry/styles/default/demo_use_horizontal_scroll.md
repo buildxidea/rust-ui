@@ -1,7 +1,7 @@
 ---
 title: "Demo Use Horizontal Scroll"
 name: "demo_use_horizontal_scroll"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: []
 type: "components:demos"
 path: "demos/demo_use_horizontal_scroll.rs"

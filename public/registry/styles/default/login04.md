@@ -1,7 +1,7 @@
 ---
 title: "Login04"
 name: "login04"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button", "card", "input", "label"]
 type: "components:blocks"
 path: "blocks/login04.rs"

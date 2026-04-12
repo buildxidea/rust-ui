@@ -1,7 +1,7 @@
 ---
 title: "Bar Chart 01"
 name: "bar_chart_01"
-cargo_dependencies: []
+cargo_dependencies: ["serde"]
 registry_dependencies: []
 type: "components:charts"
 path: "charts/bar_chart_01.rs"

@@ -1,7 +1,7 @@
 ---
 title: "Demo Item File Upload"
 name: "demo_item_file_upload"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["item", "progress"]
 type: "components:demos"
 path: "demos/demo_item_file_upload.rs"

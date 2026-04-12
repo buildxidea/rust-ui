@@ -1,7 +1,7 @@
 ---
 title: "Multi Select"
 name: "multi_select"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/multi_select.rs"

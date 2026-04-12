@@ -1,7 +1,7 @@
 ---
 title: "Demo Empty Avatar Group"
 name: "demo_empty_avatar_group"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["avatar", "button", "empty"]
 type: "components:demos"
 path: "demos/demo_empty_avatar_group.rs"

@@ -1,7 +1,7 @@
 ---
 title: "Data Grid"
 name: "data_grid"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["checkbox", "dropdown_menu"]
 type: "components:ui"
 path: "ui/data_grid.rs"

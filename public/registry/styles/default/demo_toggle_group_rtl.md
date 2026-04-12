@@ -1,7 +1,7 @@
 ---
 title: "Demo Toggle Group Rtl"
 name: "demo_toggle_group_rtl"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["direction_provider", "toggle_group"]
 type: "components:demos"
 path: "demos/demo_toggle_group_rtl.rs"

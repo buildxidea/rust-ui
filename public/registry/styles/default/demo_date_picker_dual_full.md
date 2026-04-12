@@ -1,8 +1,8 @@
 ---
 title: "Demo Date Picker Dual Full"
 name: "demo_date_picker_dual_full"
-cargo_dependencies: []
-registry_dependencies: ["date_picker", "date_picker_dual_state"]
+cargo_dependencies: ["icons/leptos", "time"]
+registry_dependencies: ["date_picker", "date_picker_dual_state", "query"]
 type: "components:demos"
 path: "demos/demo_date_picker_dual_full.rs"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Radial Chart 01"
 name: "radial_chart_01"
-cargo_dependencies: []
+cargo_dependencies: ["serde"]
 registry_dependencies: []
 type: "components:charts"
 path: "charts/radial_chart_01.rs"

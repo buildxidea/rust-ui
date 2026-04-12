@@ -1,7 +1,7 @@
 ---
 title: "Auto Form"
 name: "auto_form"
-cargo_dependencies: []
+cargo_dependencies: ["serde", "validator"]
 registry_dependencies: ["checkbox", "form", "label", "switch"]
 type: "components:ui"
 path: "ui/auto_form.rs"

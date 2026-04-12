@@ -1,7 +1,7 @@
 ---
 title: "Radar Chart 01"
 name: "radar_chart_01"
-cargo_dependencies: []
+cargo_dependencies: ["serde"]
 registry_dependencies: []
 type: "components:charts"
 path: "charts/radar_chart_01.rs"

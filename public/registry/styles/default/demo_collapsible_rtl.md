@@ -1,7 +1,7 @@
 ---
 title: "Demo Collapsible Rtl"
 name: "demo_collapsible_rtl"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["collapsible", "direction_provider"]
 type: "components:demos"
 path: "demos/demo_collapsible_rtl.rs"

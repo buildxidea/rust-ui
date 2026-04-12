@@ -1,7 +1,7 @@
 ---
 title: "Country"
 name: "country"
-cargo_dependencies: []
+cargo_dependencies: ["serde"]
 registry_dependencies: []
 type: "components:utils"
 path: "utils/country.rs"

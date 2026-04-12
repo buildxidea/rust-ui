@@ -1,7 +1,7 @@
 ---
 title: "Demo Toggle Group Outline"
 name: "demo_toggle_group_outline"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["toggle_group"]
 type: "components:demos"
 path: "demos/demo_toggle_group_outline.rs"

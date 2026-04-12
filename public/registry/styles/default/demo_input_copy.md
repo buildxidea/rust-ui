@@ -1,7 +1,7 @@
 ---
 title: "Demo Input Copy"
 name: "demo_input_copy"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button", "input"]
 type: "components:demos"
 path: "demos/demo_input_copy.rs"

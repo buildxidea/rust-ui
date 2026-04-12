@@ -1,7 +1,7 @@
 ---
 title: "Demo Input Group"
 name: "demo_input_group"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["input_group"]
 type: "components:demos"
 path: "demos/demo_input_group.rs"

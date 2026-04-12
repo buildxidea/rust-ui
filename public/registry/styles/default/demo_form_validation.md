@@ -1,7 +1,7 @@
 ---
 title: "Demo Form Validation"
 name: "demo_form_validation"
-cargo_dependencies: []
+cargo_dependencies: ["serde", "validator"]
 registry_dependencies: ["form"]
 type: "components:demos"
 path: "demos/demo_form_validation.rs"

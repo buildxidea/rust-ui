@@ -1,7 +1,7 @@
 ---
 title: "Header01"
 name: "header01"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button", "header", "theme_toggle"]
 type: "components:blocks"
 path: "blocks/header01.rs"

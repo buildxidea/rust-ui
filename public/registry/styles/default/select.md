@@ -1,7 +1,7 @@
 ---
 title: "Select"
 name: "select"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos", "strum"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/select.rs"

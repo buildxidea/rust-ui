@@ -1,7 +1,7 @@
 ---
 title: "Demo Drawer Family"
 name: "demo_drawer_family"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["drawer"]
 type: "components:demos"
 path: "demos/demo_drawer_family.rs"

@@ -1,7 +1,7 @@
 ---
 title: "Demo Accordion Icons"
 name: "demo_accordion_icons"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["accordion"]
 type: "components:demos"
 path: "demos/demo_accordion_icons.rs"

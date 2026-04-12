@@ -1,7 +1,7 @@
 ---
 title: "Demo Avatar Group Count Icon"
 name: "demo_avatar_group_count_icon"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["avatar"]
 type: "components:demos"
 path: "demos/demo_avatar_group_count_icon.rs"

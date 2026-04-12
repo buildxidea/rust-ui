@@ -1,7 +1,7 @@
 ---
 title: "Demo Use Locks"
 name: "demo_use_locks"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button"]
 type: "components:demos"
 path: "demos/demo_use_locks.rs"

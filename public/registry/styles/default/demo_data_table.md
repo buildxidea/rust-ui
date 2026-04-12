@@ -1,7 +1,7 @@
 ---
 title: "Demo Data Table"
 name: "demo_data_table"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos", "strum"]
 registry_dependencies: ["alert_dialog", "button", "checkbox", "data_table", "dropdown_menu", "input", "multi_select"]
 type: "components:demos"
 path: "demos/demo_data_table.rs"

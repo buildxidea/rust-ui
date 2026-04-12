@@ -1,7 +1,7 @@
 ---
 title: "Demo Docker"
 name: "demo_docker"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: []
 type: "components:demos"
 path: "demos/demo_docker.rs"

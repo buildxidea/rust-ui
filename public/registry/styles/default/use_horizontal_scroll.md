@@ -1,7 +1,7 @@
 ---
 title: "Use Horizontal Scroll"
 name: "use_horizontal_scroll"
-cargo_dependencies: []
+cargo_dependencies: ["strum"]
 registry_dependencies: []
 type: "components:hooks/"
 path: "hooks/use_horizontal_scroll.rs"

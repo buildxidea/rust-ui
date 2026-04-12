@@ -1,7 +1,7 @@
 ---
 title: "Charts"
 name: "charts"
-cargo_dependencies: []
+cargo_dependencies: ["strum"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/charts.rs"

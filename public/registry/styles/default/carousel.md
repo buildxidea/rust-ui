@@ -1,7 +1,7 @@
 ---
 title: "Carousel"
 name: "carousel"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/carousel.rs"

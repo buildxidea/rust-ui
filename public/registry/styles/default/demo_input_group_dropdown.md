@@ -1,7 +1,7 @@
 ---
 title: "Demo Input Group Dropdown"
 name: "demo_input_group_dropdown"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["dropdown_menu", "input_group"]
 type: "components:demos"
 path: "demos/demo_input_group_dropdown.rs"

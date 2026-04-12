@@ -1,7 +1,7 @@
 ---
 title: "Use Form"
 name: "use_form"
-cargo_dependencies: []
+cargo_dependencies: ["serde", "serde_json", "validator"]
 registry_dependencies: []
 type: "components:hooks/"
 path: "hooks/use_form.rs"

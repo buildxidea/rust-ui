@@ -1,7 +1,7 @@
 ---
 title: "Menubar"
 name: "menubar"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: []
 type: "components:ui"
 path: "ui/menubar.rs"

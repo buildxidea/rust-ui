@@ -1,7 +1,7 @@
 ---
 title: "Sheet"
 name: "sheet"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button"]
 type: "components:ui"
 path: "ui/sheet.rs"

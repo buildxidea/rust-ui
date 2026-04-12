@@ -1,7 +1,7 @@
 ---
 title: "Demo Kbd Input Group"
 name: "demo_kbd_input_group"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["input_group", "kbd"]
 type: "components:demos"
 path: "demos/demo_kbd_input_group.rs"

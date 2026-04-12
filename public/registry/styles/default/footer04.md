@@ -1,7 +1,7 @@
 ---
 title: "Footer04"
 name: "footer04"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button", "footer", "input"]
 type: "components:blocks"
 path: "blocks/footer04.rs"

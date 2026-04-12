@@ -1,7 +1,7 @@
 ---
 title: "Demo Command"
 name: "demo_command"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos", "strum"]
 registry_dependencies: ["command", "input_group", "kbd"]
 type: "components:demos"
 path: "demos/demo_command.rs"

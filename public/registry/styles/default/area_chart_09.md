@@ -1,7 +1,7 @@
 ---
 title: "Area Chart 09"
 name: "area_chart_09"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos", "serde"]
 registry_dependencies: ["card", "charts"]
 type: "components:charts"
 path: "charts/area_chart_09.rs"

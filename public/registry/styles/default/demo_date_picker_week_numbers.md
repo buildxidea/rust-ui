@@ -1,8 +1,8 @@
 ---
 title: "Demo Date Picker Week Numbers"
 name: "demo_date_picker_week_numbers"
-cargo_dependencies: []
-registry_dependencies: ["date_picker", "date_picker_state"]
+cargo_dependencies: ["icons/leptos", "time"]
+registry_dependencies: ["date", "date_picker", "date_picker_state"]
 type: "components:demos"
 path: "demos/demo_date_picker_week_numbers.rs"
 ---

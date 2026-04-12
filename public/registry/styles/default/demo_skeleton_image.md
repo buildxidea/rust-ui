@@ -1,7 +1,7 @@
 ---
 title: "Demo Skeleton Image"
 name: "demo_skeleton_image"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["skeleton"]
 type: "components:demos"
 path: "demos/demo_skeleton_image.rs"

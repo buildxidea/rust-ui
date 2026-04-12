@@ -1,7 +1,7 @@
 ---
 title: "Demo Empty"
 name: "demo_empty"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["button", "empty"]
 type: "components:demos"
 path: "demos/demo_empty.rs"

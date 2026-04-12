@@ -1,7 +1,7 @@
 ---
 title: "Sidenav09"
 name: "sidenav09"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["accordion", "button", "sheet", "sidenav"]
 type: "components:blocks"
 path: "blocks/sidenav09.rs"

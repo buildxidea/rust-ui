@@ -1,7 +1,7 @@
 ---
 title: "Demo Dropdown Menu Radio"
 name: "demo_dropdown_menu_radio"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["dropdown_menu"]
 type: "components:demos"
 path: "demos/demo_dropdown_menu_radio.rs"

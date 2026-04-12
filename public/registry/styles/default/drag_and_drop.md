@@ -44,10 +44,7 @@ pub use components::*;
 /// which runs after Leptos WASM hydration — so listeners are never stripped by
 /// node replacement the way vanilla JS attached-at-parse-time listeners are.
 #[component]
-pub fn Draggable(
-    #[prop(into, optional)] class: String,
-    children: Children,
-) -> impl IntoView {
+pub fn Draggable(#[prop(into, optional)] class: String, children: Children) -> impl IntoView {
     Effect::new(move |_| {
         let Some(document) = window().document() else { return };
 
@@ -59,10 +56,7 @@ pub fn Draggable(
                 let _ = el.class_list().add_1("dragging");
             }
         });
-        let _ = document.add_event_listener_with_callback(
-            "dragstart",
-            dragstart.as_ref().unchecked_ref(),
-        );
+        let _ = document.add_event_listener_with_callback("dragstart", dragstart.as_ref().unchecked_ref());
         dragstart.forget();
 
         // dragend — unmark the dragged element
@@ -73,10 +67,7 @@ pub fn Draggable(
                 let _ = el.class_list().remove_1("dragging");
             }
         });
-        let _ = document.add_event_listener_with_callback(
-            "dragend",
-            dragend.as_ref().unchecked_ref(),
-        );
+        let _ = document.add_event_listener_with_callback("dragend", dragend.as_ref().unchecked_ref());
         dragend.forget();
 
         // dragover — move the dragging element to the correct position in the zone
@@ -91,18 +82,12 @@ pub fn Draggable(
 
             let after = get_drag_after_element(&container, f64::from(e.client_y()));
             if let Some(after_el) = after {
-                let _ = container.insert_before(
-                    dragging.unchecked_ref(),
-                    Some(after_el.unchecked_ref()),
-                );
+                let _ = container.insert_before(dragging.unchecked_ref(), Some(after_el.unchecked_ref()));
             } else {
                 let _ = container.append_child(dragging.unchecked_ref());
             }
         });
-        let _ = document.add_event_listener_with_callback(
-            "dragover",
-            dragover.as_ref().unchecked_ref(),
-        );
+        let _ = document.add_event_listener_with_callback("dragover", dragover.as_ref().unchecked_ref());
         dragover.forget();
     });
 
@@ -120,6 +105,7 @@ pub fn DraggableItem(#[prop(into)] text: String) -> impl IntoView {
         <div
             class="p-4 border cursor-move border-input bg-card draggable [&.dragging]:opacity-50"
             draggable="true"
+            tabindex="0"
             data-name="DraggableItem"
         >
             {text}
@@ -134,9 +120,7 @@ pub fn DraggableItem(#[prop(into)] text: String) -> impl IntoView {
 /// Returns the element after which the dragged item should be inserted,
 /// based on the cursor's Y position. Returns `None` to append at the end.
 fn get_drag_after_element(container: &Element, y: f64) -> Option<HtmlElement> {
-    let items = container
-        .query_selector_all(".draggable:not(.dragging)")
-        .ok()?;
+    let items = container.query_selector_all(".draggable:not(.dragging)").ok()?;
 
     let mut closest_offset = f64::NEG_INFINITY;
     let mut closest: Option<HtmlElement> = None;

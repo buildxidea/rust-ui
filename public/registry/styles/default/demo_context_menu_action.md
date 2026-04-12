@@ -1,7 +1,7 @@
 ---
 title: "Demo Context Menu Action"
 name: "demo_context_menu_action"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["context_menu", "separator", "toast_custom"]
 type: "components:demos"
 path: "demos/demo_context_menu_action.rs"

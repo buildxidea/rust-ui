@@ -1,7 +1,7 @@
 ---
 title: "Use Column State"
 name: "use_column_state"
-cargo_dependencies: []
+cargo_dependencies: ["strum"]
 registry_dependencies: ["data_grid"]
 type: "components:hooks/"
 path: "hooks/use_column_state.rs"

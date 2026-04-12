@@ -1,7 +1,7 @@
 ---
 title: "Demo Collapsible File Tree"
 name: "demo_collapsible_file_tree"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["card", "collapsible", "tabs"]
 type: "components:demos"
 path: "demos/demo_collapsible_file_tree.rs"

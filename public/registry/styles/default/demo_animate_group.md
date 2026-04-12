@@ -1,7 +1,7 @@
 ---
 title: "Demo Animate Group"
 name: "demo_animate_group"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["animate", "button"]
 type: "components:demos"
 path: "demos/demo_animate_group.rs"

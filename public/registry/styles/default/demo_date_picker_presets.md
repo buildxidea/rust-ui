@@ -1,7 +1,7 @@
 ---
 title: "Demo Date Picker Presets"
 name: "demo_date_picker_presets"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos", "time"]
 registry_dependencies: ["button", "card", "date_picker", "date_picker_state"]
 type: "components:demos"
 path: "demos/demo_date_picker_presets.rs"

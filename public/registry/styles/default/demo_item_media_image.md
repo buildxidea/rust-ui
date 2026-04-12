@@ -1,7 +1,7 @@
 ---
 title: "Demo Item Media Image"
 name: "demo_item_media_image"
-cargo_dependencies: []
+cargo_dependencies: ["icons/leptos"]
 registry_dependencies: ["badge", "item"]
 type: "components:demos"
 path: "demos/demo_item_media_image.rs"

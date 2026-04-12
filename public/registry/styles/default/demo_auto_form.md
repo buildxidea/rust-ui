@@ -1,7 +1,7 @@
 ---
 title: "Demo Auto Form"
 name: "demo_auto_form"
-cargo_dependencies: []
+cargo_dependencies: ["autoform", "serde", "validator"]
 registry_dependencies: ["auto_form", "button"]
 type: "components:demos"
 path: "demos/demo_auto_form.rs"

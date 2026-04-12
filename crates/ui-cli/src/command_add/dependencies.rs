@@ -9,6 +9,16 @@ use crate::command_init::workspace_utils::{WorkspaceInfo, analyze_workspace};
 use crate::shared::cli_error::{CliError, CliResult};
 use crate::shared::task_spinner::TaskSpinner;
 
+/// Split a registry dep string like `"icons/leptos"` into `("icons", vec!["leptos"])`.
+/// Plain names like `"serde"` return `("serde", vec![])`.
+fn parse_dep_features(dep: &str) -> (&str, Vec<&str>) {
+    if let Some((name, features_str)) = dep.split_once('/') {
+        (name, features_str.split(',').collect())
+    } else {
+        (dep, vec![])
+    }
+}
+
 pub fn process_cargo_deps(cargo_deps: &[String]) -> CliResult<()> {
     let spinner = TaskSpinner::new("Checking dependencies...");
 
@@ -18,9 +28,9 @@ pub fn process_cargo_deps(cargo_deps: &[String]) -> CliResult<()> {
     // Get existing dependencies from the target Cargo.toml
     let existing_deps = get_existing_dependencies(&workspace_info)?;
 
-    // Filter out dependencies that already exist
+    // Filter out dependencies that already exist (compare by crate name only, ignoring features)
     let (new_deps, existing_deps_found): (Vec<_>, Vec<_>) =
-        cargo_deps.iter().partition(|dep| !existing_deps.contains(*dep));
+        cargo_deps.iter().partition(|dep| !existing_deps.contains(parse_dep_features(dep).0));
 
     if !existing_deps_found.is_empty() {
         let existing_str = existing_deps_found.iter().map(|s| s.as_str()).collect::<Vec<_>>().join(", ");
@@ -113,22 +123,24 @@ fn add_workspace_dependency(dep: &str, info: &WorkspaceInfo) -> CliResult<()> {
         .as_ref()
         .ok_or_else(|| CliError::cargo_operation("Target crate path not found"))?;
 
+    let (dep_name, features) = parse_dep_features(dep);
+
     // First, get the latest version from crates.io
-    let version = fetch_latest_version(dep)?;
+    let version = fetch_latest_version(dep_name)?;
 
     // Add to workspace root [workspace.dependencies]
     let root_cargo_toml = workspace_root.join("Cargo.toml");
-    add_to_workspace_dependencies(&root_cargo_toml, dep, &version)?;
+    add_to_workspace_dependencies(&root_cargo_toml, dep_name, &version, &features)?;
 
     // Add to member [dependencies] with workspace = true
     let member_cargo_toml = member_path.join("Cargo.toml");
-    add_workspace_ref_to_member(&member_cargo_toml, dep)?;
+    add_workspace_ref_to_member(&member_cargo_toml, dep_name)?;
 
     Ok(())
 }
 
 /// Add dependency to [workspace.dependencies] in root Cargo.toml
-fn add_to_workspace_dependencies(cargo_toml_path: &Path, dep: &str, version: &str) -> CliResult<()> {
+fn add_to_workspace_dependencies(cargo_toml_path: &Path, dep: &str, version: &str, features: &[&str]) -> CliResult<()> {
     let contents = fs::read_to_string(cargo_toml_path)?;
     let mut doc: DocumentMut = contents
         .parse()
@@ -151,8 +163,20 @@ fn add_to_workspace_dependencies(cargo_toml_path: &Path, dep: &str, version: &st
         return Ok(());
     }
 
-    // Add the dependency with version
-    deps_table.insert(dep, Item::Value(Value::String(toml_edit::Formatted::new(version.to_string()))));
+    // Add the dependency — with inline features table if needed, plain string otherwise
+    let value = if features.is_empty() {
+        Item::Value(Value::String(toml_edit::Formatted::new(version.to_string())))
+    } else {
+        let mut inline = toml_edit::InlineTable::new();
+        inline.insert("version", Value::String(toml_edit::Formatted::new(version.to_string())));
+        let mut arr = toml_edit::Array::new();
+        for f in features {
+            arr.push(f.to_string());
+        }
+        inline.insert("features", Value::Array(arr));
+        Item::Value(Value::InlineTable(inline))
+    };
+    deps_table.insert(dep, value);
 
     // Write back
     fs::write(cargo_toml_path, doc.to_string())?;
@@ -245,9 +269,16 @@ fn add_dependency_with_cargo(dep: &str, workspace_info: &Option<WorkspaceInfo>) 
     }
 }
 
-/// Build cargo add arguments, adding --package flag for workspaces
+/// Build cargo add arguments, adding --features and --package flags as needed.
+/// Accepts `dep` in `"crate"` or `"crate/feature1,feature2"` format.
 fn build_cargo_add_args(dep: &str, workspace_info: &Option<WorkspaceInfo>) -> Vec<String> {
-    let mut args = vec!["add".to_string(), dep.to_string()];
+    let (dep_name, features) = parse_dep_features(dep);
+    let mut args = vec!["add".to_string(), dep_name.to_string()];
+
+    if !features.is_empty() {
+        args.push("--features".to_string());
+        args.push(features.join(","));
+    }
 
     if let Some(info) = workspace_info.as_ref().filter(|i| i.is_workspace)
         && let Some(crate_name) = &info.target_crate
@@ -308,9 +339,50 @@ mod tests {
     use super::*;
 
     #[test]
+    fn test_parse_dep_features_plain() {
+        let (name, features) = parse_dep_features("serde");
+        assert_eq!(name, "serde");
+        assert!(features.is_empty());
+    }
+
+    #[test]
+    fn test_parse_dep_features_with_one_feature() {
+        let (name, features) = parse_dep_features("icons/leptos");
+        assert_eq!(name, "icons");
+        assert_eq!(features, vec!["leptos"]);
+    }
+
+    #[test]
+    fn test_parse_dep_features_with_multiple_features() {
+        let (name, features) = parse_dep_features("serde/derive,std");
+        assert_eq!(name, "serde");
+        assert_eq!(features, vec!["derive", "std"]);
+    }
+
+    #[test]
     fn test_build_cargo_add_args_no_workspace() {
         let args = build_cargo_add_args("serde", &None);
         assert_eq!(args, vec!["add", "serde"]);
+    }
+
+    #[test]
+    fn test_build_cargo_add_args_with_features() {
+        // Regression: icons/leptos must produce --features leptos
+        let args = build_cargo_add_args("icons/leptos", &None);
+        assert_eq!(args, vec!["add", "icons", "--features", "leptos"]);
+    }
+
+    #[test]
+    fn test_build_cargo_add_args_features_and_workspace() {
+        let info = WorkspaceInfo {
+            is_workspace: true,
+            workspace_root: Some(PathBuf::from("/project")),
+            target_crate: Some("frontend".to_string()),
+            target_crate_path: Some(PathBuf::from("/project/frontend")),
+            components_base_path: "frontend/src/components".to_string(),
+        };
+        let args = build_cargo_add_args("icons/leptos", &Some(info));
+        assert_eq!(args, vec!["add", "icons", "--features", "leptos", "--package", "frontend"]);
     }
 
     #[test]
@@ -445,7 +517,7 @@ leptos = "0.7"
         .unwrap();
 
         // Add serde
-        add_to_workspace_dependencies(&cargo_toml, "serde", "1.0").unwrap();
+        add_to_workspace_dependencies(&cargo_toml, "serde", "1.0", &[]).unwrap();
 
         // Verify
         let contents = fs::read_to_string(&cargo_toml).unwrap();
@@ -587,6 +659,31 @@ tempfile = "3.0"
     }
 
     #[test]
+    fn test_add_to_workspace_dependencies_with_features() {
+        let temp = TempDir::new().unwrap();
+        let cargo_toml = temp.path().join("Cargo.toml");
+
+        fs::write(
+            &cargo_toml,
+            r#"[workspace]
+members = ["app"]
+
+[workspace.dependencies]
+leptos = "0.7"
+"#,
+        )
+        .unwrap();
+
+        add_to_workspace_dependencies(&cargo_toml, "icons", "0.18.0", &["leptos"]).unwrap();
+
+        let contents = fs::read_to_string(&cargo_toml).unwrap();
+        assert!(contents.contains("icons"), "Should contain icons: {contents}");
+        assert!(contents.contains("leptos"), "Should contain leptos feature: {contents}");
+        // Must be inline table format, not a bare version string
+        assert!(contents.contains("features"), "Should have features key: {contents}");
+    }
+
+    #[test]
     fn test_add_workspace_dependency_full_flow() {
         let temp = TempDir::new().unwrap();
         let root = temp.path();
@@ -627,7 +724,7 @@ leptos.workspace = true
         };
 
         // Test the individual functions since fetch_latest_version requires network
-        add_to_workspace_dependencies(&root.join("Cargo.toml"), "serde", "1.0").unwrap();
+        add_to_workspace_dependencies(&root.join("Cargo.toml"), "serde", "1.0", &[]).unwrap();
         add_workspace_ref_to_member(&app_dir.join("Cargo.toml"), "serde").unwrap();
 
         // Verify root Cargo.toml

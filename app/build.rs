@@ -1,11 +1,11 @@
 use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher};
-use std::process::Command;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // Get the current date for footer using system date command
-    let output = Command::new("date").args(["+%Y-%m-%d"]).output()?;
-    let build_date = String::from_utf8(output.stdout)?.trim().to_owned();
+    // Get the current date using the `time` crate instead of the `date` system command,
+    // which is Unix-only and not available on Windows.
+    let now = time::OffsetDateTime::now_utc();
+    let build_date = format!("{}-{:02}-{:02}", now.year(), now.month() as u8, now.day());
     println!("cargo:rustc-env=BUILD_DATE={build_date}");
 
     // Try to read the CSS file and hash its content

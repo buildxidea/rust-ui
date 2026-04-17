@@ -34,7 +34,7 @@ pub fn ActionBar(children: Children) -> impl IntoView {
             <SvgFilter />
         </div>
 
-        <script type="module" src="/app/action_bar.js"></script>
+        <script type="module" src="/components/action_bar.js"></script>
     }
 }
 

@@ -7,7 +7,7 @@ Each dependency level is shown with progressive bullet points: * for components,
   ** cargo: icons/leptos
   ** use_random (hooks)
 * action_bar (ui)
-  ** js: /app/action_bar.js
+  ** js: /components/action_bar.js
 * alert (ui)
 * alert_dialog (ui)
   ** button (ui)
@@ -766,7 +766,7 @@ Each dependency level is shown with progressive bullet points: * for components,
   ** drag_and_drop (ui)
 * demo_drawer (demos)
   ** drawer (ui)
-    *** js: /app/vaul_drawer.js
+    *** js: /components/vaul_drawer.js
     *** button (ui)
 * demo_drawer_dialog (demos)
   ** button (ui)
@@ -775,18 +775,18 @@ Each dependency level is shown with progressive bullet points: * for components,
     *** button (ui)
     *** use_random (hooks)
   ** drawer (ui)
-    *** js: /app/vaul_drawer.js
+    *** js: /components/vaul_drawer.js
     *** button (ui)
   ** input (ui)
     *** cargo: strum
 * demo_drawer_family (demos)
   ** cargo: icons/leptos
   ** drawer (ui)
-    *** js: /app/vaul_drawer.js
+    *** js: /components/vaul_drawer.js
     *** button (ui)
 * demo_drawer_focus (demos)
   ** drawer (ui)
-    *** js: /app/vaul_drawer.js
+    *** js: /components/vaul_drawer.js
     *** button (ui)
   ** input (ui)
     *** cargo: strum
@@ -795,33 +795,33 @@ Each dependency level is shown with progressive bullet points: * for components,
 * demo_drawer_nested (demos)
   ** js: /drawer_v3.js
   ** drawer (ui)
-    *** js: /app/vaul_drawer.js
+    *** js: /components/vaul_drawer.js
     *** button (ui)
 * demo_drawer_non_dismissable (demos)
   ** drawer (ui)
-    *** js: /app/vaul_drawer.js
+    *** js: /components/vaul_drawer.js
     *** button (ui)
 * demo_drawer_rtl (demos)
   ** direction_provider (ui)
     *** cargo: strum
   ** drawer (ui)
-    *** js: /app/vaul_drawer.js
+    *** js: /components/vaul_drawer.js
     *** button (ui)
 * demo_drawer_scrollable (demos)
   ** drawer (ui)
-    *** js: /app/vaul_drawer.js
+    *** js: /components/vaul_drawer.js
     *** button (ui)
 * demo_drawer_side (demos)
   ** drawer (ui)
-    *** js: /app/vaul_drawer.js
+    *** js: /components/vaul_drawer.js
     *** button (ui)
 * demo_drawer_side_floating (demos)
   ** drawer (ui)
-    *** js: /app/vaul_drawer.js
+    *** js: /components/vaul_drawer.js
     *** button (ui)
 * demo_drawer_side_scrollable (demos)
   ** drawer (ui)
-    *** js: /app/vaul_drawer.js
+    *** js: /components/vaul_drawer.js
     *** button (ui)
 * demo_dropdown_menu (demos)
   ** dropdown_menu (ui)
@@ -1176,24 +1176,24 @@ Each dependency level is shown with progressive bullet points: * for components,
 * demo_input_otp (demos)
   ** input_otp (ui)
     *** cargo: icons/leptos
-    *** js: /app/otp.js
+    *** js: /components/otp.js
     *** use_random (hooks)
 * demo_input_otp_disabled (demos)
   ** input_otp (ui)
     *** cargo: icons/leptos
-    *** js: /app/otp.js
+    *** js: /components/otp.js
     *** use_random (hooks)
 * demo_input_otp_rtl (demos)
   ** direction_provider (ui)
     *** cargo: strum
   ** input_otp (ui)
     *** cargo: icons/leptos
-    *** js: /app/otp.js
+    *** js: /components/otp.js
     *** use_random (hooks)
 * demo_input_otp_separator (demos)
   ** input_otp (ui)
     *** cargo: icons/leptos
-    *** js: /app/otp.js
+    *** js: /components/otp.js
     *** use_random (hooks)
 * demo_input_phone (demos)
   ** country
@@ -1665,7 +1665,7 @@ Each dependency level is shown with progressive bullet points: * for components,
   ** cargo: strum
 * drag_and_drop (ui)
 * drawer (ui)
-  ** js: /app/vaul_drawer.js
+  ** js: /components/vaul_drawer.js
   ** button (ui)
 * dropdown_menu (ui)
   ** cargo: icons/leptos
@@ -1704,7 +1704,7 @@ Each dependency level is shown with progressive bullet points: * for components,
   ** textarea (ui)
 * input_otp (ui)
   ** cargo: icons/leptos
-  ** js: /app/otp.js
+  ** js: /components/otp.js
   ** use_random (hooks)
 * input_phone (ui)
   ** cargo: icons/leptos

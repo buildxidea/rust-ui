@@ -118,7 +118,7 @@ pub fn TableOfContents(toc_items: Vec<TocItem>) -> impl IntoView {
             </div>
         </aside>
 
-        <script src="/app/table_of_contents.js" />
+        <script src="/components/table_of_contents.js" />
     }
     .into_any()
 }

@@ -7,7 +7,7 @@ pub async fn log_requests(req: Request, next: Next) -> Response {
 
     // Check if this is a page request (not static assets)
     if !path.starts_with("/pkg/")
-        && !path.starts_with("/app/")
+        && !path.starts_with("/components/")
         && !path.ends_with(".js")
         && !path.ends_with(".css")
         && !path.ends_with(".wasm")

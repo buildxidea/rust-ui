@@ -34,9 +34,7 @@ fn is_immutable_asset(path: &str) -> bool {
 
 fn is_static_asset(path: &str) -> bool {
     // Non-hashed static assets should have reasonable cache times
-    path.starts_with("/app/")
-        || path.starts_with("/coming_soon/")
-        || path.starts_with("/hooks/")
+    path.starts_with("/components/")
         || path.ends_with(".js")
         || path.ends_with(".css")
         || path.ends_with(".woff")

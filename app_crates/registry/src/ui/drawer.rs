@@ -16,141 +16,8 @@ const TRANSITION_EASING: &str = "cubic-bezier(0.32, 0.72, 0, 1)";
 const WINDOW_TOP_OFFSET: f64 = 26.0;
 const BORDER_RADIUS: f64 = 8.0;
 const WRAPPER_TRANSLATE_Y: f64 = 14.0;
-const SCROLL_LOCK_TIMEOUT_MS: f64 = 500.0;
+const SCROLL_LOCK_TIMEOUT_MS: u32 = 500;
 const FOCUS_DELAY_MS: u64 = 100;
-
-const DRAWER_STYLE: &str = r#"
-[data-vaul-drawer] {
-  touch-action: none;
-  will-change: transform;
-  transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
-  animation-duration: 0.5s;
-  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
-}
-
-[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-position='Bottom'][data-state='open'] {
-  animation-name: slideFromBottom;
-}
-
-[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-position='Bottom'][data-state='closed'] {
-  animation-name: slideToBottom;
-}
-
-[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-position='Left'][data-state='open'] {
-  animation-name: slideFromLeft;
-}
-
-[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-position='Left'][data-state='closed'] {
-  animation-name: slideToLeft;
-}
-
-[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-position='Right'][data-state='open'] {
-  animation-name: slideFromRight;
-}
-
-[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-position='Right'][data-state='closed'] {
-  animation-name: slideToRight;
-}
-
-[data-vaul-overlay][data-vaul-snap-points='false'] {
-  animation-duration: 0.5s;
-  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
-}
-
-[data-vaul-overlay][data-vaul-snap-points='false'][data-state='open'] {
-  animation-name: fadeIn;
-}
-
-[data-vaul-overlay][data-state='closed'] {
-  animation-name: fadeOut;
-}
-
-[data-vaul-animate='false'] {
-  animation: none !important;
-}
-
-[data-vaul-drawer]:not([data-vaul-variant='Floating'])::after {
-  content: '';
-  position: absolute;
-  background: inherit;
-  background-color: inherit;
-}
-
-[data-vaul-drawer][data-vaul-drawer-position='Bottom']::after {
-  top: 100%;
-  left: 0;
-  right: 0;
-  height: 200%;
-}
-
-[data-vaul-drawer][data-vaul-drawer-position='Left']::after {
-  right: 100%;
-  top: 0;
-  bottom: 0;
-  width: 200%;
-}
-
-[data-vaul-drawer][data-vaul-drawer-position='Right']::after {
-  left: 100%;
-  top: 0;
-  bottom: 0;
-  width: 200%;
-}
-
-[data-vaul-handle] {
-  touch-action: pan-y;
-}
-
-[data-vaul-handle-hitarea] {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: max(100%, 2.75rem);
-  height: max(100%, 2.75rem);
-  touch-action: inherit;
-}
-
-[data-vaul-variant='Floating'][data-vaul-drawer-position='Right'][data-state='closed'] {
-  transform: translate3d(calc(100% + 8px), 0, 0);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-  to { opacity: 0; }
-}
-
-@keyframes slideFromBottom {
-  from { transform: translate3d(0, var(--initial-transform, 100%), 0); }
-  to { transform: translate3d(0, 0, 0); }
-}
-
-@keyframes slideToBottom {
-  to { transform: translate3d(0, var(--initial-transform, 100%), 0); }
-}
-
-@keyframes slideFromLeft {
-  from { transform: translate3d(calc(var(--initial-transform, 100%) * -1), 0, 0); }
-  to { transform: translate3d(0, 0, 0); }
-}
-
-@keyframes slideToLeft {
-  to { transform: translate3d(calc(var(--initial-transform, 100%) * -1), 0, 0); }
-}
-
-@keyframes slideFromRight {
-  from { transform: translate3d(var(--initial-transform, 100%), 0, 0); }
-  to { transform: translate3d(0, 0, 0); }
-}
-
-@keyframes slideToRight {
-  to { transform: translate3d(var(--initial-transform, 100%), 0, 0); }
-}
-"#;
 
 mod components {
     use super::*;
@@ -294,8 +161,6 @@ pub fn Drawer(
     };
 
     view! {
-        <style>{DRAWER_STYLE}</style>
-
         <div
             node_ref=overlay_ref
             data-name="DrawerOverlay"
@@ -753,7 +618,7 @@ fn should_drag(
     }
 
     if let Some(last_prevented) = last_time_drag_prevented.get_untracked()
-        && current_time - last_prevented < SCROLL_LOCK_TIMEOUT_MS
+        && current_time - last_prevented < f64::from(SCROLL_LOCK_TIMEOUT_MS)
     {
         last_time_drag_prevented.set(Some(current_time));
         return false;

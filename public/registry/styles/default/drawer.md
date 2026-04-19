@@ -149,8 +149,6 @@ pub fn Drawer(
     });
 
     view! {
-        <style>{DRAWER_STYLE}</style>
-
         <div
             data-name="DrawerOverlay"
             node_ref=overlay_ref

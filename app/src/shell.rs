@@ -138,9 +138,6 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
                 <noscript>
                     <link rel="stylesheet" href="/components/sonner.css" />
                 </noscript>
-                <link rel="preload" href="/components/vaul_drawer.css" r#as="style" />
-                <link rel="stylesheet" href="/components/vaul_drawer.css" media="print" onload="this.media='all'" />
-
                 // Load scripts (async for non-blocking parallel download, executes as soon as ready)
                 <script async src="/components/resizable.bundle.js"></script>
                 <script async src="/components/shimmer_init.js?v=3"></script>

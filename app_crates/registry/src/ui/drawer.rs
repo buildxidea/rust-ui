@@ -382,8 +382,15 @@ pub fn DrawerContent(
     let pointer_up_ctx = ctx.clone();
     let pointer_up_cancel_ctx = ctx.clone();
 
+    let position_class = match position {
+        DrawerPosition::Bottom => "right-0 bottom-0 left-0 max-h-[96vh] rounded-t-[10px]",
+        DrawerPosition::Left => "left-0 top-0 bottom-0 max-w-[96vw] rounded-r-[10px]",
+        DrawerPosition::Right => "right-0 top-0 bottom-0 max-w-[96vw] rounded-l-[10px]",
+    };
+
     let merged_class = tw_merge!(
-        "flex flex-col pt-3 pb-6 px-6 fixed right-0 bottom-0 left-0 z-210 bg-background max-h-[96vh] rounded-t-[10px] hidden outline-none",
+        "flex flex-col pt-3 pb-6 px-6 fixed z-210 bg-background hidden outline-none",
+        position_class,
         class
     );
 
@@ -728,7 +735,6 @@ fn lock_body_scroll() {
     if scrollbar_width > 0.0 {
         let _ = body.style().set_property("padding-right", &format!("{scrollbar_width}px"));
     }
-    let _ = body.style().set_property("overflow", "hidden");
 }
 
 fn unlock_body_scroll() {
@@ -736,7 +742,6 @@ fn unlock_body_scroll() {
     let Some(body) = document.body() else { return };
     let _ = body.remove_attribute("data-state");
     let _ = body.style().remove_property("padding-right");
-    let _ = body.style().remove_property("overflow");
 }
 
 fn apply_open_wrapper_styles() {
@@ -793,7 +798,10 @@ fn clear_wrapper_styles() {
 fn close_transform(drawer_size: f64, position: DrawerPosition, variant: DrawerVariant) -> String {
     match position {
         DrawerPosition::Bottom => format!("translate3d(0, {drawer_size}px, 0)"),
-        DrawerPosition::Left => format!("translate3d(-{drawer_size}px, 0, 0)"),
+        DrawerPosition::Left => {
+            let distance = if variant == DrawerVariant::Floating { drawer_size + 8.0 } else { drawer_size };
+            format!("translate3d(-{distance}px, 0, 0)")
+        }
         DrawerPosition::Right => {
             let distance = if variant == DrawerVariant::Floating { drawer_size + 8.0 } else { drawer_size };
             format!("translate3d({distance}px, 0, 0)")
@@ -834,7 +842,6 @@ fn open_drawer_dom(
     }
 
     apply_open_wrapper_styles();
-    ctx.previous_active_element.set(document.active_element());
 
     let ctx = ctx.clone();
     let callback = Closure::once(move || {

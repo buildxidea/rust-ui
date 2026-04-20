@@ -139,10 +139,10 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
                     <link rel="stylesheet" href="/components/sonner.css" />
                 </noscript>
                 // Load scripts (async for non-blocking parallel download, executes as soon as ready)
-                <script async src="/components/resizable.bundle.js"></script>
-                <script async src="/components/shimmer_init.js?v=3"></script>
-                <script async src="/components/lazy_load_sonner.js"></script>
-                <script async src="/components/sidenav.js?v=1"></script>
+                <script async src="/components/resizable.bundle.js?v=2"></script>
+                <script async src="/components/shimmer_init.js?v=4"></script>
+                <script async src="/components/lazy_load_sonner.js?v=2"></script>
+                <script async src="/components/sidenav.js?v=2"></script>
 
                 // JSON-LD Structured Data for SEO (inlined at compile time — readable by AI crawlers)
                 <script type="application/ld+json" inner_html=include_str!("../../public/schema.json")></script>

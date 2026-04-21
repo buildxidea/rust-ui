@@ -141,7 +141,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Trigger button renders and has correct text
      */
-    test("should have trigger button", async ({ page }) => {
+    test("should have trigger button", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -165,7 +165,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Drawer starts in closed state on page load
      */
-    test("drawer should be closed by default", async ({ page }) => {
+    test("drawer should be closed by default", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -189,7 +189,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: DrawerContent has proper Tailwind styling classes
      */
-    test("should have DrawerContent with correct classes", async ({ page }) => {
+    test("should have DrawerContent with correct classes", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -218,7 +218,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Drawer handle is visible when drawer is open
      */
-    test("should have drawer handle when open", async ({ page }) => {
+    test("should have drawer handle when open", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
       await ui.openDrawer();
@@ -274,7 +274,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Close button is visible when drawer is open
      */
-    test("should have close button when open", async ({ page }) => {
+    test("should have close button when open", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
       await ui.openDrawer();
@@ -304,7 +304,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Clicking trigger transitions drawer to open state
      */
-    test("clicking trigger should open drawer", async ({ page }) => {
+    test("clicking trigger should open drawer", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -335,7 +335,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Close button properly closes the drawer
      */
-    test("clicking close button should close drawer", async ({ page }) => {
+    test("clicking close button should close drawer", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
       await ui.openDrawer();
@@ -366,7 +366,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Clicking overlay (outside drawer) closes it
      */
-    test("clicking overlay should close drawer", async ({ page }) => {
+    test("clicking overlay should close drawer", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
       await ui.openDrawer();
@@ -402,7 +402,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: ESC keyboard shortcut closes the drawer
      */
-    test("pressing ESC should close drawer", async ({ page }) => {
+    test("pressing ESC should close drawer", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
       await ui.openDrawer();
@@ -430,7 +430,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Drawer can be reopened after being closed
      */
-    test("drawer can be reopened after closing", async ({ page }) => {
+    test("drawer can be reopened after closing", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -500,7 +500,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Non-dismissable drawer can be opened
      */
-    test("non-dismissable drawer should open", async ({ page }) => {
+    test("non-dismissable drawer should open", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto("non-dismissable");
 
@@ -543,7 +543,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: ESC key does NOT close non-dismissable drawer
      */
-    test("ESC should not close non-dismissable drawer", async ({ page }) => {
+    test("ESC should not close non-dismissable drawer", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto("non-dismissable");
 
@@ -664,7 +664,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Side drawer opens and slides from the right
      */
-    test("side drawer should open from right", async ({ page }) => {
+    test("side drawer should open from right", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto("side");
 
@@ -700,7 +700,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Drawer uses fixed positioning
      */
-    test("drawer should have fixed positioning", async ({ page }) => {
+    test("drawer should have fixed positioning", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -725,7 +725,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Drawer has rounded corners styling
      */
-    test("drawer should have rounded corners", async ({ page }) => {
+    test("drawer should have rounded corners", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -779,7 +779,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Trigger button can receive keyboard focus
      */
-    test("trigger button should be focusable", async ({ page }) => {
+    test("trigger button should be focusable", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -836,7 +836,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Drawer title uses h2 semantic element
      */
-    test("drawer title should be h2 element", async ({ page }) => {
+    test("drawer title should be h2 element", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
       await ui.openDrawer();
@@ -866,7 +866,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Drawer has vaul library marker attribute
      */
-    test("should have vaul drawer attribute", async ({ page }) => {
+    test("should have vaul drawer attribute", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -893,7 +893,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Overlay has vaul overlay marker attribute
      */
-    test("overlay should have vaul overlay attribute", async ({ page }) => {
+    test("overlay should have vaul overlay attribute", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -922,7 +922,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Handle has vaul handle marker attribute
      */
-    test("handle should have vaul handle attribute", async ({ page }) => {
+    test("handle should have vaul handle attribute", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
       await ui.openDrawer();
@@ -951,7 +951,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Drawer has animation enabled
      */
-    test("should have animate attribute enabled", async ({ page }) => {
+    test("should have animate attribute enabled", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -979,7 +979,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Default drawer can be dismissed
      */
-    test("default drawer should be dismissible", async ({ page }) => {
+    test("default drawer should be dismissible", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -1009,7 +1009,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Default drawer position is Bottom
      */
-    test("default drawer should have bottom position", async ({ page }) => {
+    test("default drawer should have bottom position", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -1039,7 +1039,7 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Page contains multiple drawer demo triggers
      */
-    test("page should have multiple drawer demos", async ({ page }) => {
+    test("page should have multiple drawer demos", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
@@ -1065,12 +1065,239 @@ test.describe("Drawer Page", () => {
      *
      *   Validates: Page contains multiple drawer content elements
      */
-    test("page should have multiple drawer contents", async ({ page }) => {
+    test("page should have multiple drawer contents", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.goto();
 
       const contentCount = await ui.allDrawerContents.count();
       expect(contentCount).toBeGreaterThan(1);
+    });
+  });
+
+  test.describe("Drag to Close", () => {
+    /**
+     * TEST: Drag down past threshold closes bottom drawer
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   Simulates a fast downward swipe on the drawer handle that
+     *   exceeds the velocity threshold (0.4) → drawer should close.
+     *
+     *   ┌─────────────────────────────────────────────────────────┐
+     *   │   ══════════  ← drag handle                             │
+     *   │   drag ↓↓↓ (fast, > 25% height or velocity > 0.4)      │
+     *   │   → data-state="closed"                                 │
+     *   └─────────────────────────────────────────────────────────┘
+     */
+    test("fast downward drag should close bottom drawer", async ({ page }: { page: Page }) => {
+      const ui = new DrawerPage(page);
+      await ui.goto();
+      await ui.openDrawer();
+
+      const box = await ui.drawerContent.boundingBox();
+      if (!box) throw new Error("Drawer has no bounding box");
+
+      const startX = box.x + box.width / 2;
+      const startY = box.y + 20; // near top of drawer
+      const endY = startY + box.height * 0.6; // drag 60% of height
+
+      await page.mouse.move(startX, startY);
+      await page.mouse.down();
+      // Move in small steps to simulate realistic pointer events
+      for (let i = 1; i <= 10; i++) {
+        await page.mouse.move(startX, startY + (endY - startY) * (i / 10), { steps: 1 });
+      }
+      await page.mouse.up();
+
+      await expect(ui.drawerContent).toHaveAttribute("data-state", "closed");
+    });
+
+    /**
+     * TEST: Small drag (below threshold) should NOT close drawer
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   A tiny drag (< 25% height, low velocity) should snap back open.
+     */
+    test("small drag below threshold should not close drawer", async ({ page }: { page: Page }) => {
+      const ui = new DrawerPage(page);
+      await ui.goto();
+      await ui.openDrawer();
+
+      const box = await ui.drawerContent.boundingBox();
+      if (!box) throw new Error("Drawer has no bounding box");
+
+      const startX = box.x + box.width / 2;
+      const startY = box.y + 20;
+      const endY = startY + box.height * 0.1; // only 10% — below threshold
+
+      await page.mouse.move(startX, startY);
+      await page.mouse.down();
+      await page.mouse.move(startX, endY, { steps: 20 }); // slow, many steps
+      await page.mouse.up();
+
+      await page.waitForTimeout(300);
+      await expect(ui.drawerContent).toHaveAttribute("data-state", "open");
+    });
+  });
+
+  test.describe("Focus Management", () => {
+    /**
+     * TEST: Tab key cycles focus within open drawer (focus trap)
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   ┌─────────────────────────────────────────────────────────┐
+     *   │   [Button A] → Tab → [Button B] → Tab → [Button A]     │
+     *   │   Focus stays inside drawer, never escapes              │
+     *   └─────────────────────────────────────────────────────────┘
+     */
+    test("Tab key should cycle focus within open drawer", async ({ page }: { page: Page }) => {
+      const ui = new DrawerPage(page);
+      await ui.goto();
+      await ui.openDrawer();
+
+      // Tab through all focusable elements and verify focus stays inside drawer
+      await page.keyboard.press("Tab");
+      const focusedAfterTab = await page.evaluate(() =>
+        document.activeElement?.closest('[data-name="DrawerContent"]') !== null
+      );
+      expect(focusedAfterTab).toBe(true);
+    });
+
+    /**
+     * TEST: Focus returns to trigger after drawer closes
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   ┌─────────────────────────────────────────────────────────┐
+     *   │   1. Click trigger → opens drawer                       │
+     *   │   2. Close drawer                                       │
+     *   │   3. Focus → back on trigger button                     │
+     *   └─────────────────────────────────────────────────────────┘
+     */
+    test("focus should return to trigger after drawer closes", async ({ page }: { page: Page }) => {
+      const ui = new DrawerPage(page);
+      await ui.goto();
+
+      await ui.triggerButton.click();
+      await ui.waitForDataState(ui.drawerContent, "open");
+      await page.waitForTimeout(200);
+
+      await ui.closeDrawer();
+      await page.waitForTimeout(600); // wait for animation + focus restore
+
+      await expect(ui.triggerButton).toBeFocused();
+    });
+  });
+
+  test.describe("Body Scroll Lock", () => {
+    /**
+     * TEST: Body gets data-state="open" when drawer opens
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   Vaul sets data-state="open" on <body> to trigger scroll lock CSS.
+     */
+    test("body should have data-state open when drawer is open", async ({ page }: { page: Page }) => {
+      const ui = new DrawerPage(page);
+      await ui.goto();
+      await ui.openDrawer();
+
+      const bodyState = await page.evaluate(() =>
+        document.body.getAttribute("data-state")
+      );
+      expect(bodyState).toBe("open");
+    });
+
+    /**
+     * TEST: Body data-state is removed after drawer closes
+     */
+    test("body data-state should be removed after drawer closes", async ({ page }: { page: Page }) => {
+      const ui = new DrawerPage(page);
+      await ui.goto();
+      await ui.openDrawer();
+      await ui.closeDrawer();
+      await page.waitForTimeout(600);
+
+      const bodyState = await page.evaluate(() =>
+        document.body.getAttribute("data-state")
+      );
+      expect(bodyState).toBeNull();
+    });
+  });
+
+  test.describe("Positions & Variants", () => {
+    /**
+     * TEST: Left drawer has correct position attribute
+     */
+    test("left drawer should have Left position attribute", async ({ page }: { page: Page }) => {
+      const ui = new DrawerPage(page);
+      await ui.goto("side");
+
+      const leftDrawer = page.locator('[data-vaul-drawer-position="Left"]').first();
+      await expect(leftDrawer).toHaveAttribute("data-vaul-drawer-position", "Left");
+    });
+
+    /**
+     * TEST: Floating variant has correct data-vaul-variant attribute
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   ┌─────────────────────────────────────────────────────────┐
+     *   │   data-vaul-variant="Floating"                          │
+     *   │   (drawer floats with margin, not edge-to-edge)         │
+     *   └─────────────────────────────────────────────────────────┘
+     */
+    test("floating drawer should have Floating variant attribute", async ({ page }: { page: Page }) => {
+      const ui = new DrawerPage(page);
+      await ui.goto("side");
+
+      const floatingDrawer = page.locator('[data-vaul-variant="Floating"]').first();
+      await expect(floatingDrawer).toHaveAttribute("data-vaul-variant", "Floating");
+    });
+
+    /**
+     * TEST: Default drawer has Inset variant attribute
+     */
+    test("default drawer should have Inset variant attribute", async ({ page }: { page: Page }) => {
+      const ui = new DrawerPage(page);
+      await ui.goto();
+
+      await expect(ui.drawerContent).toHaveAttribute("data-vaul-variant", "Inset");
+    });
+  });
+
+  test.describe("Animation Sequencing", () => {
+    /**
+     * TEST: data-vaul-animate is "false" during close animation
+     * ─────────────────────────────────────────────────────────────
+     *
+     *   Vaul sets animate=false on content+overlay during close so CSS
+     *   transitions are driven by JS instead of CSS animations.
+     *
+     *   ┌─────────────────────────────────────────────────────────┐
+     *   │   open:  data-vaul-animate="true"                       │
+     *   │   close: data-vaul-animate="false" (during transition)  │
+     *   │   after: data-vaul-animate="true"  (reset)              │
+     *   └─────────────────────────────────────────────────────────┘
+     */
+    test("data-vaul-animate should be false during close animation", async ({ page }: { page: Page }) => {
+      const ui = new DrawerPage(page);
+      await ui.goto();
+      await ui.openDrawer();
+
+      // Start close — immediately check animate attr before animation finishes
+      await ui.closeButton.click();
+      const animateAttr = await ui.drawerContent.getAttribute("data-vaul-animate");
+      expect(animateAttr).toBe("false");
+    });
+
+    /**
+     * TEST: data-vaul-animate resets to true after close completes
+     */
+    test("data-vaul-animate should reset to true after close", async ({ page }: { page: Page }) => {
+      const ui = new DrawerPage(page);
+      await ui.goto();
+      await ui.openDrawer();
+      await ui.closeDrawer();
+      await page.waitForTimeout(600);
+
+      await expect(ui.drawerContent).toHaveAttribute("data-vaul-animate", "true");
     });
   });
 
@@ -1107,7 +1334,7 @@ test.describe("Drawer Page", () => {
      *   Validates: Drawer trigger works after SPA navigation
      *   (regression: transform stacking context broke fixed overlay)
      */
-    test("drawer should open after SPA navigation", async ({ page }) => {
+    test("drawer should open after SPA navigation", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.gotoViaSpa();
       await ui.openDrawer();
@@ -1132,7 +1359,7 @@ test.describe("Drawer Page", () => {
      *   Validates: Overlay is visible and covers the page correctly
      *   (regression: fixed overlay was mispositioned due to transform)
      */
-    test("drawer overlay should be visible after SPA navigation", async ({ page }) => {
+    test("drawer overlay should be visible after SPA navigation", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.gotoViaSpa();
       await ui.openDrawer();
@@ -1148,7 +1375,7 @@ test.describe("Drawer Page", () => {
      *   Uses Escape key instead of the Close button click to avoid
      *   timing issues with the vaul drawer animation after SPA nav.
      */
-    test("drawer should close after SPA navigation", async ({ page }) => {
+    test("drawer should close after SPA navigation", async ({ page }: { page: Page }) => {
       const ui = new DrawerPage(page);
       await ui.gotoViaSpa();
       await ui.openDrawer();

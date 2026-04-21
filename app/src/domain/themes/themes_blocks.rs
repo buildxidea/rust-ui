@@ -24,7 +24,7 @@ pub fn ThemesBlocks() -> impl IntoView {
         }
         let Ok(script) = document.create_element("script") else { return };
         let _ = script.set_attribute("id", "chart-init-script");
-        let _ = script.set_attribute("src", "/components/chart_init.js?v=6");
+        let _ = script.set_attribute("src", "/app_components/chart_init.js?v=6");
         let _ = head.append_child(&script);
     });
 

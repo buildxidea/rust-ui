@@ -25,6 +25,6 @@ pub fn DemoRangeSlider() -> impl IntoView {
             </div>
         </div>
 
-        <script src="/components/range_slider.js" />
+        <script src="/app_components/range_slider.js" />
     }
 }

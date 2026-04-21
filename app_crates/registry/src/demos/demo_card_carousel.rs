@@ -57,7 +57,7 @@ pub fn DemoCardCarousel() -> impl IntoView {
             </CardContent>
         </div>
 
-        <script type="module" src="/components/card_carousel.js"></script>
+        <script type="module" src="/app_components/card_carousel.js"></script>
     }
 }
 

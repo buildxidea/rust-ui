@@ -32,7 +32,7 @@ pub fn InputOTP(
                 prop:value=value
                 class="sr-only"
             />
-            <script src="/components/otp.js" />
+            <script src="/app_components/otp.js" />
         </div>
     }
 }

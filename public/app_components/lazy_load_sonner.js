@@ -39,7 +39,7 @@
         const script = document.createElement("script");
         script.type = "module";
         script.async = true;
-        script.src = "/components/sonner.js";
+        script.src = "/app_components/sonner.js";
 
         script.onload = () => {
           this.loaded = true;

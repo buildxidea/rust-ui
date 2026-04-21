@@ -3,7 +3,7 @@ use leptos::prelude::*;
 #[component]
 pub fn DemoCarouselSnapScroll() -> impl IntoView {
     view! {
-        <link rel="stylesheet" href="/components/carousel-snap-scroll.css" />
+        <link rel="stylesheet" href="/app_components/carousel-snap-scroll.css" />
 
         <div class="mainDiv">
             <div class="scrollsnap-carousel">

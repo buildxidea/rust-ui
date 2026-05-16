@@ -4,6 +4,14 @@
 
 ---
 
+## 0.3.15
+
+### Fixed
+
+- Removed incorrect nightly Rust warning. Leptos works on stable; nightly is only needed for the rust-ui dev workspace itself.
+
+---
+
 ## 0.3.13
 
 ### Added

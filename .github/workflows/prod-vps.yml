@@ -209,22 +209,6 @@ jobs:
     - name: Copy configs to server
       run: |
         ${{ env.SCP }} docker-compose.prod.yml root@${{ secrets.SERVER_IP }}:~
-        ${{ env.SCP }} nginx.conf root@${{ secrets.SERVER_IP }}:~
-
-    - name: Generate SSL certs on server (if not present)
-      run: |
-        ${{ env.SSH }} "
-          mkdir -p ~/ssl
-          if [ ! -f ~/ssl/nginx-selfsigned.crt ]; then
-            openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
-              -keyout ~/ssl/nginx-selfsigned.key \
-              -out    ~/ssl/nginx-selfsigned.crt \
-              -subj   '/CN=rust-ui.com'
-            echo 'SSL certs generated'
-          else
-            echo 'SSL certs already exist, skipping'
-          fi
-        "
 
     - name: Docker login on server
       run: |
@@ -237,7 +221,7 @@ jobs:
     - name: Smoke test
       run: |
         sleep 5
-        ${{ env.SSH }} "curl -sf http://localhost/health || (docker compose -f docker-compose.prod.yml logs app --tail=20 && exit 1)"
+        ${{ env.SSH }} "curl -sf http://localhost:4001/health || (docker compose -f docker-compose.prod.yml logs app --tail=20 && exit 1)"
 
     - name: Cleanup old Docker images
       run: |

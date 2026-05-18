@@ -221,7 +221,7 @@ jobs:
     - name: Smoke test
       run: |
         sleep 5
-        ${{ env.SSH }} "curl -sf http://localhost:4001/health || (docker compose -f docker-compose.prod.yml logs app --tail=20 && exit 1)"
+        ${{ env.SSH }} "curl -sf http://localhost:4001/ -o /dev/null || (docker logs root-app-1 --tail=20 && exit 1)"
 
     - name: Cleanup old Docker images
       run: |

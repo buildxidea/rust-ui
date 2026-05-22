@@ -169,6 +169,8 @@ pub mod demo_input_otp_rtl;
 pub mod demo_input_otp_separator;
 pub mod demo_input_phone;
 pub mod demo_input_phone_disabled;
+pub mod demo_input_prompt;
+pub mod demo_input_prompt_with_tools;
 pub mod demo_input_rtl;
 pub mod demo_item;
 pub mod demo_item_dropdown_menu;

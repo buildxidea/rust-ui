@@ -1224,6 +1224,26 @@ Each dependency level is shown with progressive bullet points: * for components,
     *** popover (ui)
       **** use_random (hooks)
   ** phone_number
+* demo_input_prompt (demos)
+  ** cargo: icons/leptos
+  ** input_prompt (ui)
+    *** button (ui)
+    *** input_group (ui)
+      **** input (ui)
+        ***** cargo: strum
+      **** textarea (ui)
+* demo_input_prompt_with_tools (demos)
+  ** cargo: icons/leptos
+  ** input_group (ui)
+    *** input (ui)
+      **** cargo: strum
+    *** textarea (ui)
+  ** input_prompt (ui)
+    *** button (ui)
+    *** input_group (ui)
+      **** input (ui)
+        ***** cargo: strum
+      **** textarea (ui)
 * demo_input_rtl (demos)
   ** direction_provider (ui)
     *** cargo: strum
@@ -1718,6 +1738,12 @@ Each dependency level is shown with progressive bullet points: * for components,
   ** phone_number
   ** popover (ui)
     *** use_random (hooks)
+* input_prompt (ui)
+  ** button (ui)
+  ** input_group (ui)
+    *** input (ui)
+      **** cargo: strum
+    *** textarea (ui)
 * item (ui)
   ** separator (ui)
 * kbd (ui)
